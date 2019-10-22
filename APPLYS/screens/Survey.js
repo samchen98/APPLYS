@@ -12,38 +12,39 @@ import {
   } from 'react-native';
 import styles from './Styles.js'
 import ScreenController from './ScreenController'
+import {Button} from 'native-base'
 //
 
 export default class Survey extends React.Component{
     constructor(props) {
         super(props);
         this.state = { 
-            page: ""
+            survey: true
         };
     }
     handleClick = (type) => {
         this.setState({page: type})
     }
     render(){
-        if(this.state.page == ""){
+        if(this.state.survey){
             return(
               <View style={{height: '100%', backgroundColor: '#43D51E'}}>
 
-              <View>
-                <Text >Question 1 </Text>
-               
-            <Text style={{height: '75%'}}> question goes here</Text>
-            </View>
-            
-            
-            <View  style={{ marginBottom: 0}}>
-            <Button raised={true}  title= 'Yes' />
-            <Button title= 'Somewhat'/>
-            <Button title= 'No'/>
-            <Button title= 'Submit'/>
-            </View>
-            
-          </View>
+                <View>
+                  <Text >Question 1 </Text>
+                
+                <Text style={{height: '75%'}}> question goes here</Text>
+                </View>
+                
+                
+                <View  style={{ marginBottom: 0}}>
+                <Button raised={true}  title= 'Yes' />
+                <Button title= 'Somewhat'/>
+                <Button title= 'No'/>
+                <Button title= 'Submit'/>
+                </View>
+              
+              </View>
                 
             )
         }

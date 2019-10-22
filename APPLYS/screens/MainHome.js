@@ -32,7 +32,7 @@ export default class MainHome extends React.Component{
                     style={styles.container}
                     contentContainerStyle={styles.contentContainer}>
                         <View style = {styles.container}>
-                            <Text>gbjkkjbj</Text>
+                            <Text>xcvbn</Text>
                             <TouchableOpacity
                                 style = {styles.submitButton}
                                 onPress = {() => this.handleClick("survey")}>
