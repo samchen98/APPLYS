@@ -11,6 +11,9 @@ import {
     TextInput
   } from 'react-native';
 import styles from './Styles.js'
+import Survey from './Survey.js'
+import Passport from './Passport'
+
 
 export default class ScreenController extends React.Component{
     constructor(props) {
@@ -22,12 +25,12 @@ export default class ScreenController extends React.Component{
     render() {
         if(this.state.page == "survey") {
             return(
-                <Text>survey</Text>
+                <Survey/>
             )
         }
         else if(this.state.page == "passport") {
             return(
-                <Text>passport</Text>
+                <Passport/>
             )
         }
         else if(this.state.page == "infographics") {
