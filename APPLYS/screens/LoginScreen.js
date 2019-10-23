@@ -28,7 +28,7 @@ export default class LoginScreen extends Component {
     };
   }
   static navigationOptions = {
-    title: 'Please sign in',
+    title: 'Sign In',
   };
   handleEmail = (text) => {
       this.setState({ email: text })
