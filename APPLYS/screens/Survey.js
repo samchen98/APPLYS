@@ -38,10 +38,27 @@ export default class Survey extends React.Component{
                 
                 
                 <View  style={{ marginBottom: 0}}>
-                <Button raised={true}  title= 'Yes' />
-                <Button title= 'Somewhat'/>
-                <Button title= 'No'/>
-                <Button title= 'Submit'/>
+                            <TouchableOpacity
+                                style = {styles.questionButton}
+                                onPress = {() => this.handleClick("passport")}>
+                                <Text style = {styles.submitButtonText}> Yes </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style = {styles.questionButton}
+                                onPress = {() => this.handleClick("passport")}>
+                                <Text style = {styles.submitButtonText}> Somewhat </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style = {styles.questionButton}
+                                onPress = {() => this.handleClick("passport")}>
+                                <Text style = {styles.submitButtonText}> No </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style = {styles.questionSubmitButton}
+                                onPress = {() => this.handleClick("passport")}>
+                                <Text style = {styles.submitButtonText}> Submit </Text>
+                            </TouchableOpacity>
+                
                 </View>
               
               </View>

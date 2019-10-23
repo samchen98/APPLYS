@@ -29,11 +29,15 @@ export default class Passport extends React.Component{
         if(this.state.passport){
             return(
               <View style={{height: '100%', backgroundColor: '#43D51E'}}>
-                  <Button title= 'Back'/>
+                 
+                  <TouchableOpacity
+                                style = {styles.submitButton}
+                                onPress = {() => this.handleClick("homescreen")}>
+                                <Text style = {styles.submitButtonText}> Back </Text>
+                            </TouchableOpacity>
                   <View>
-                      <text>name:
-                          Age:
-                      </text>
+                      <Text>name:                  Age:
+                      </Text>
                   <Image
               source={
                 __DEV__
@@ -44,11 +48,11 @@ export default class Passport extends React.Component{
             />
                   </View>
                   <View style={{height: '30%'}}>
-                      <text>condition and description </text>  
+                      <Text>condition and description </Text>  
                   </View>
                   
                   <View style={{height: '30%'}}>
-                    <text>list of medications:</text>
+                    <Text>list of medications:</Text>
                   </View>
                 
               </View>

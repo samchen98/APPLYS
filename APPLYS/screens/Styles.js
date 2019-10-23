@@ -6,6 +6,21 @@ import {
   } from 'react-native';
 
 export default StyleSheet.create({
+  questionSubmitButton: {
+     
+    backgroundColor: '#000000' ,
+    
+    height: 40,
+    textAlign: 'center',
+  },
+    questionButton: {
+     
+      backgroundColor: '#6a0dad',
+      
+      height: 40,
+      textAlign: 'center',
+    },
+
     container: {
       flex: 1,
       backgroundColor: '#fff',

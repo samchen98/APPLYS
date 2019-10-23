@@ -12,6 +12,8 @@ import {
   } from 'react-native';
 import styles from './Styles.js'
 import Survey from './Survey.js'
+import Passport from './Passport'
+
 
 export default class ScreenController extends React.Component{
     constructor(props) {
