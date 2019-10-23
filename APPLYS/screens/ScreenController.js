@@ -28,7 +28,7 @@ export default class ScreenController extends React.Component{
         }
         else if(this.state.page == "passport") {
             return(
-                <Text>passport</Text>
+                <Passport/>
             )
         }
         else if(this.state.page == "infographics") {
