@@ -7,12 +7,14 @@ import LoginScreen from '../screens/LoginScreen';
 import MainHome from '../screens/MainHome'
 import Survey from '../screens/Survey'
 import Passport from '../screens/Passport'
+import Infographics from '../screens/Infographics'
 
 //add screens here
 const AppStack = createStackNavigator({
   Home: {screen: MainHome},
   Survey: {screen: Survey},
   Passport: {screen: Passport},
+  Infographics: {screen: Infographics}
 })
 const AuthStack = createStackNavigator({
   Login: {screen: LoginScreen}, 
