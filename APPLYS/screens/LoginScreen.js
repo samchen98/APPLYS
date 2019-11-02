@@ -2,6 +2,7 @@ import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import {AsyncStorage} from 'react-native';
 import  { Component } from 'react';
+import {Button} from 'native-base'
 import {
   Image,
   Platform,
@@ -67,23 +68,27 @@ export default class LoginScreen extends Component {
                   placeholderTextColor = "#000000"
                   autoCapitalize = "none"
                   onChangeText={email => this.setState({ email })}
-                  value= {this.state.email}
+                  value= {this.state.email}/>
                   
-                  />
-                  
-                <TextInput style = {styles.input}
-                  underlineColorAndroid = "transparent"
-                  placeholder = "Password"
-                  placeholderTextColor = "#000000"
-                  autoCapitalize = "none"
-                  onChangeText = {password => this.setState({ password })}
-                  value= {this.state.password}/>
-                
-                <TouchableOpacity
-                  style = {styles.submitButton}
-                  onPress = {this._signInAsync}>
-                  <Text style = {styles.submitButtonText}> Login </Text>
-                </TouchableOpacity>
+            <TextInput style = {styles.input}
+              underlineColorAndroid = "transparent"
+              placeholder = "Password"
+              placeholderTextColor = "#000000"
+              autoCapitalize = "none"
+              onChangeText = {password => this.setState({ password })}
+              value= {this.state.password}/>
+            
+            <Button
+              style = {styles.submitButton}
+              onPress = {this._signInAsync}>
+              <Text style = {styles.submitButtonText}> Login </Text>
+            </Button>
+
+            <Button
+              style = {styles.submitButton}
+              onPress = {() => this.props.navigation.navigate("Signup")}>
+              <Text style = {styles.submitButtonText}> Sign Up </Text>
+            </Button>
     
     
           
