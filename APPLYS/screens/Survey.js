@@ -12,69 +12,51 @@ import {
   } from 'react-native';
 import styles from './Styles.js'
 import {Button} from 'native-base'
-//
+import QuestionGenerator from '../components/QuestionGenerator.js';
+import MainHome from './MainHome.js';
+const questions = require('../surveyquestions/questions.json');
 
 export default class Survey extends React.Component{
     constructor(props) {
         super(props);
         this.state = { 
+          qnum : 0,
+          answerarr: []
         };
     }
-    handleClick = (type) => {
-        this.setState({page: type})
-    }
-    render(){
-      return(
-        <View style={{height: '100%', backgroundColor: '#43D51E'}}>
 
-          <View>
-            <Text >Question 1 </Text>
-          
-          <Text style={{height: '75%'}}> question goes here</Text>
-          </View>
-          
-          
-          <View  style={{ marginBottom: 0}}>
-                      <TouchableOpacity
-                          style = {styles.questionButton}
-                          onPress = {() => this.handleClick("passport")}>
-                          <Text style = {styles.submitButtonText}> Yes </Text>
-                      </TouchableOpacity>
-                      <TouchableOpacity
-                          style = {styles.questionButton}
-                          onPress = {() => this.handleClick("passport")}>
-                          <Text style = {styles.submitButtonText}> Somewhat </Text>
-                      </TouchableOpacity>
-                      <TouchableOpacity
-                          style = {styles.questionButton}
-                          onPress = {() => this.handleClick("passport")}>
-                          <Text style = {styles.submitButtonText}> No </Text>
-                      </TouchableOpacity>
-                      <TouchableOpacity
-                          style = {styles.questionSubmitButton}
-                          onPress = {() => this.handleClick("passport")}>
-                          <Text style = {styles.submitButtonText}> Submit </Text>
-                      </TouchableOpacity>
-          
-          </View>
-        
-        </View>
-          
-      )
+    getAnswers = () => {
+      var answerarr = []
+      var answers = questions.question[this.state.qnum].answers
+      answers.map(function(answer){
+        console.log(answer)
+        answerarr.push(answer)        
+      })
+      return answerarr
+    }
+
+    updateQuestion = () => {
+      this.setState({qnum : this.state.qnum + 1})
+    }
+    
+    render(){
+      console.log(questions)
+        if(questions.question.length > this.state.qnum){
+          var answerarr = this.getAnswers()
+          return(
+            <QuestionGenerator updateQuestion = {this.updateQuestion} questionnum = {this.state.qnum} question = {questions.question[this.state.qnum].prompt} answerarr = {answerarr} />
+          )
+        }
+        else{
+          return(
+            <MainHome/>
+          )
+        }
+      
         
     }
 }
 
-const styles1 = StyleSheet.create({
-  qbackground:{
-    backgroundColor: '#43D51E'
-
-  },
-  button:{
-    backgroundColor: '#000000',
-    borderColor: '#fff'
-  }
-});
 
 
 

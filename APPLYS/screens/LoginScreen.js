@@ -24,7 +24,6 @@ export default class LoginScreen extends Component {
     super(props);
     this.state = { email: '' ,
     password:'',
-    logged: false
     };
   }
   static navigationOptions = {
@@ -37,8 +36,6 @@ export default class LoginScreen extends Component {
       this.setState({ password: text })
   }
   login = (email, pass) => {
-    console.log("trye")
-    this.setState({logged:true}) //this should happen after axios call works
     // const newUser = {
     //   email: email,
     //   password: pass

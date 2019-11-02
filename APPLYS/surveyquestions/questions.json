@@ -1,0 +1,32 @@
+{
+    "question": [
+        {
+            "prompt": "how do you",
+            "answers": [
+            "a",
+            "b",
+            "c",
+            "d"
+            ]
+        },
+        {
+            "prompt": "question 2......",
+            "answers": [
+            "a2",
+            "b2",
+            "c2",
+            "d2"
+            ]
+        },
+        {
+            "prompt": "question 3......",
+            "answers": [
+            "a",
+            "b",
+            "c",
+            "d"
+            ]
+        }
+    ]
+    
+}
