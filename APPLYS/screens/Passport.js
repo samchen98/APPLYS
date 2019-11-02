@@ -21,6 +21,7 @@ export default class Passport extends React.Component{
             
         };
     }
+    //need to get user information from call
     handleClick = (type) => {
         this.setState({page: type})
     }
@@ -28,16 +29,8 @@ export default class Passport extends React.Component{
       return(
         <View style={{height: '100%', backgroundColor: '#43D51E'}}>
             <View>
-                <Text>name:                  Age:
-                </Text>
-            <Image
-        source={
-          __DEV__
-            ? require('../assets/images/robot-dev.png')
-            : require('../assets/images/robot-prod.png')
-        }
-        style={styles.welcomeImage}
-      />
+                <Text>Name:</Text>
+                <Text>Age:</Text>
             </View>
             <View style={{height: '30%'}}>
                 <Text>condition and description </Text>  
