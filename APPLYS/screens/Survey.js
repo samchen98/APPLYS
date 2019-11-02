@@ -6,7 +6,6 @@ import {
     ScrollView,
     StyleSheet,
     Text,
-    TouchableOpacity,
     View,
     TextInput
   } from 'react-native';
@@ -14,6 +13,7 @@ import styles from './Styles.js'
 import {Button} from 'native-base'
 import QuestionGenerator from '../components/QuestionGenerator.js';
 import MainHome from './MainHome.js';
+import FeedbackGenerator from '../components/FeedbackGenerator.js';
 const questions = require('../surveyquestions/questions.json');
 
 export default class Survey extends React.Component{
@@ -21,7 +21,9 @@ export default class Survey extends React.Component{
         super(props);
         this.state = { 
           qnum : 0,
-          answerarr: []
+          answerarr: [],
+          isQuestion: true,
+          correct : true
         };
     }
 
@@ -29,31 +31,38 @@ export default class Survey extends React.Component{
       var answerarr = []
       var answers = questions.question[this.state.qnum].answers
       answers.map(function(answer){
-        console.log(answer)
         answerarr.push(answer)        
       })
       return answerarr
     }
 
+    getFeedback = () => {
+      console.log(this.state.isQuestion)
+      this.setState({isQuestion: !this.state.isQuestion})
+    }
     updateQuestion = () => {
-      this.setState({qnum : this.state.qnum + 1})
+      this.setState({isQuestion: !this.state.isQuestion, qnum : this.state.qnum + 1})
     }
     
     render(){
-      console.log(questions)
-        if(questions.question.length > this.state.qnum){
+      if(questions.question.length > this.state.qnum) {
+        if(this.state.isQuestion){
           var answerarr = this.getAnswers()
           return(
-            <QuestionGenerator updateQuestion = {this.updateQuestion} questionnum = {this.state.qnum} question = {questions.question[this.state.qnum].prompt} answerarr = {answerarr} />
+            <QuestionGenerator getFeedback = {this.getFeedback} questionnum = {this.state.qnum} question = {questions.question[this.state.qnum].prompt} answerarr = {answerarr} />
           )
         }
         else{
           return(
-            <MainHome/>
+            <FeedbackGenerator updateQuestion = {this.updateQuestion} feedback = {questions.question[this.state.qnum].feedback}/>
           )
         }
-      
-        
+      }
+      else{
+        return(
+          <MainHome/>
+        )
+      }
     }
 }
 

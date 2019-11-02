@@ -19,13 +19,11 @@ export default class QuestionGenerator extends React.Component{
           answerarr: []
         };
     }
+    //need to do axios call to determine if answer is correct or not; then return correct/incorrect back to survey page
     // handleSubmit(){
-    //     console.log("sub")
-    //     this.props.update(this.props.questionnum)
+    //     this.props.getFeedback()
     // }
     render(){
-        console.log(this.props.questionnum)
-        console.log(this.props.numOfQs)
             return(
                 <View style={{height: '100%'}}>
         
@@ -59,7 +57,7 @@ export default class QuestionGenerator extends React.Component{
                   <View>
                       <Button
                           style = {styles.questionSubmitButton}
-                          onPress = {this.props.updateQuestion}>
+                          onPress = {this.props.getFeedback}>
                           <Text style = {styles.submitButtonText}> Submit </Text>
                       </Button>
                       <Button
