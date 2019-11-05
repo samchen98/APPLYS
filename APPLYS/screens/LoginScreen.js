@@ -36,12 +36,12 @@ export default class LoginScreen extends Component {
       this.setState({ password: text })
   }
   login = (email, pass) => {
-    // const newUser = {
-    //   email: email,
-    //   password: pass
-    // };
-    // axios.post('http://localhost:4000/users/add', newUser)
-    // .then(res => console.log(res.data));
+    const newUser = {
+      email: email,
+      password: pass
+    };
+    axios.post('http://localhost:4000/users/add', newUser)
+    .then(res => console.log(res.data));
       // alert('email: ' + email + ' password: ' + pass)
   }
   render(){
@@ -80,10 +80,20 @@ export default class LoginScreen extends Component {
                   value= {this.state.password}/>
                 
                 <TouchableOpacity
-                  style = {styles.submitButton}
-                  onPress = {this._signInAsync}>
-                  <Text style = {styles.submitButtonText}> Login </Text>
-                </TouchableOpacity>
+               style = {styles.submitButton}
+               onPress = {
+                  () => this.login(this.state.email, this.state.password)
+               }>
+               <Text style = {styles.submitButtonText}> Login </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+               style = {styles.submitButton}
+               onPress = {
+                  () => this.login(this.state.email, this.state.password)
+               }>
+               <Text style = {styles.submitButtonText}> Need Account? </Text>
+            </TouchableOpacity>
     
     
           
@@ -94,45 +104,9 @@ export default class LoginScreen extends Component {
       );       
 
   }
-  _signInAsync = async () => {
-    await AsyncStorage.setItem('userToken', 'abc');
-    this.props.navigation.navigate('App');
-  };
+  // _signInAsync = async () => {
+  //   await AsyncStorage.setItem('userToken', 'abc');
+  //   this.props.navigation.navigate('App');
+  // };
   
 }
-
-// function DevelopmentModeNotice() {
-//   if (__DEV__) {
-//     const learnMoreButton = (
-//       <Text onPress={handleLearnMorePress} style={styles.helpLinkText}>
-//         Learn more
-//       </Text>
-//     );
-
-//     return (
-//       <Text style={styles.developmentModeText}>
-//         Development mode is enabled: your app will be slower but you can use
-//         useful development tools. {learnMoreButton}
-//       </Text>
-//     );
-//   } else {
-//     return (
-//       <Text style={styles.developmentModeText}>
-//         You are not in development mode: your app will run at full speed.
-//       </Text>
-//     );
-//   }
-// }
-
-// function handleLearnMorePress() {
-//   WebBrowser.openBrowserAsync(
-//     'https://docs.expo.io/versions/latest/workflow/development-mode/'
-//   );
-// }
-
-// function handleHelpPress() {
-//   WebBrowser.openBrowserAsync(
-//     'https://docs.expo.io/versions/latest/workflow/up-and-running/#cant-see-your-changes'
-//   );
-// }
-
