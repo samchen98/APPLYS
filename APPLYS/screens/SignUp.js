@@ -19,7 +19,7 @@ import styles from './Styles.js'
 import { MonoText } from '../components/StyledText';
 import { tsConstructorType } from '@babel/types';
 
-export default class LoginScreen extends Component {
+export default class SignUpScreen extends Component {
   constructor(props) {
     super(props);
     this.state = { email: '' ,
@@ -27,7 +27,7 @@ export default class LoginScreen extends Component {
     };
   }
   static navigationOptions = {
-    title: 'Sign In',
+    title: 'Sign Up',
   };
   handleEmail = (text) => {
       this.setState({ email: text })
@@ -37,10 +37,11 @@ export default class LoginScreen extends Component {
   }
   _createaccount = async () => {
     await AsyncStorage.clear();
-    this.props.navigation.navigate('Sign');
+    this.props.navigation.navigate('Auth');
 };
 
   login = (email, pass) => {
+      console.log("hello")
     const newUser = {
       email: email,
       password: pass
