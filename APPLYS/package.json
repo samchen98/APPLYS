@@ -1,5 +1,8 @@
 {
   "main": "node_modules/expo/AppEntry.js",
+  "engines": {
+    "node": "v12.10.0"
+  },
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
