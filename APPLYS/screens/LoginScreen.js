@@ -45,7 +45,8 @@ export default class LoginScreen extends Component {
       email: email,
       password: pass
     };
-    axios.post('http://localhost:4000/users/add', newUser)
+    console.log("hello")
+    axios.post('http://localhost:4003/users/add', newUser)
     .then(res => console.log(res.data));
       // alert('email: ' + email + ' password: ' + pass)
   }

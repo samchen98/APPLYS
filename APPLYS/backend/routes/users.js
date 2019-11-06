@@ -8,6 +8,7 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
+  console.log("is hit")
 
   const { body } = req;
   const {
