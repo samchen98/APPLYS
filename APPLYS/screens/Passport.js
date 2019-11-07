@@ -21,16 +21,25 @@ export default class Passport extends React.Component{
             
         };
     }
-    //need to get user information from call
     handleClick = (type) => {
         this.setState({page: type})
     }
     render(){
       return(
-        <View style={{height: '100%', backgroundColor: '#43D51E'}}>
+        <View style={{ flex:1}}>
+          
+          <ScrollView contentContainerStyle={{flexGrow:1}}>
             <View>
-                <Text>Name:</Text>
-                <Text>Age:</Text>
+                <Text>name:                  Age:
+                </Text>
+            <Image
+        source={
+          __DEV__
+            ? require('../assets/images/robot-dev.png')
+            : require('../assets/images/robot-prod.png')
+        }
+        style={styles.welcomeImage}
+      />
             </View>
             <View style={{height: '30%'}}>
                 <Text>condition and description </Text>  
@@ -39,7 +48,13 @@ export default class Passport extends React.Component{
             <View style={{height: '30%'}}>
               <Text>list of medications:</Text>
             </View>
-          
+            <View style={{height: '20%'}}>
+              <Text>Emergency contact:</Text>
+            </View>
+            <View style={{height: '20%'}}>
+              <Text>doctor info.:</Text>
+            </View>
+            </ScrollView> 
         </View>
           
       )
