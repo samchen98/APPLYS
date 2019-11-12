@@ -46,7 +46,7 @@ export default class LoginScreen extends Component {
       password: pass
     };
     console.log("hello")
-    axios.post('http://localhost:4003/users/add', newUser)
+    axios.post('https://powerful-savannah-08407.herokuapp.com/users/add', newUser)
     .then(res => console.log(res.data));
       // alert('email: ' + email + ' password: ' + pass)
   }
