@@ -8,7 +8,7 @@ import MainHome from '../screens/MainHome'
 import Survey from '../screens/Survey'
 import Passport from '../screens/Passport'
 import Infographics from '../screens/Infographics'
-import SignupScreen from '../screens/Signup'
+import Signup from '../screens/Signup'
 
 
 //add screens here
@@ -23,10 +23,10 @@ const AuthStack = createStackNavigator({
   Login: {screen: LoginScreen}, 
  
 })
-const Signup = createStackNavigator({
-  Sign: {screen: SignupScreen}, 
+// const Signup = createStackNavigator({
+//   Sign: {screen: SignupScreen}, 
  
-})
+// })
 
 export default createAppContainer(
   createSwitchNavigator({
