@@ -5,7 +5,6 @@ import  { Component } from 'react';
 import {Button} from 'native-base'
 import {
   Image,
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -16,6 +15,7 @@ import {
 import axios from 'axios';
 import MainHome from './MainHome';
 import styles from './Styles.js'
+import layout from './LayoutStyles'
 
 import { MonoText } from '../components/StyledText';
 import { tsConstructorType } from '@babel/types';
@@ -38,7 +38,7 @@ export default class LoginScreen extends Component {
   }
   _createaccount = async () => {
     await AsyncStorage.clear();
-    this.props.navigation.navigate('Sign');
+    this.props.navigation.navigate('Role');
 };
 
   login = (email, pass) => {
@@ -49,64 +49,54 @@ export default class LoginScreen extends Component {
     console.log("hello")
     axios.post('https://powerful-savannah-08407.herokuapp.com/users/add', newUser)
     .then(res => console.log(res.data));
-      // alert('email: ' + email + ' password: ' + pass)
+      
   }
   render(){
       return (
-        <View style = {styles.container}>
-          <ScrollView
-            style={styles.container}
-            contentContainerStyle={styles.contentContainer}>
-            <View style={styles.welcomeContainer}>
+        <View style = {layout.container}>
+          <View style={layout.welcomeContainer}>
 
-              <Image
-                source={
-                  __DEV__
-                    ? require('../assets/images/robot-dev.png')
-                    : require('../assets/images/robot-prod.png')
-                }
-                style={styles.welcomeImage}
-              />
-            </View>
-            <TextInput style = {styles.input}
-                  underlineColorAndroid = "transparent"
-                  placeholder = "Email"
-                  placeholderTextColor = "#000000"
-                  autoCapitalize = "none"
-                  onChangeText={email => this.setState({ email })}
-                  value= {this.state.email}/>
-                 
-                  
-                <TextInput style = {styles.input}
-                  underlineColorAndroid = "transparent"
-                  placeholder = "Password"
-                  placeholderTextColor = "#000000"
-                  autoCapitalize = "none"
-                  onChangeText = {password => this.setState({ password })}
-                  value= {this.state.password}/>
+            <Image
+              source={
+                __DEV__
+                  ? require('../assets/images/robot-dev.png')
+                  : require('../assets/images/robot-prod.png')
+              }
+              style={styles.welcomeImage}
+            />
+          </View>
+          <TextInput style = {styles.input}
+                underlineColorAndroid = "transparent"
+                placeholder = "Email"
+                placeholderTextColor = "#000000"
+                autoCapitalize = "none"
+                onChangeText={email => this.setState({ email })}
+                value= {this.state.email}/>
                 
-                <TouchableOpacity
-               style = {styles.submitButton}
-               onPress = {
-                  () => this.login(this.state.email, this.state.password)
-               }>
-               <Text style = {styles.submitButtonText}> Login </Text>
-            </TouchableOpacity>
+                
+              <TextInput style = {styles.input}
+                underlineColorAndroid = "transparent"
+                placeholder = "Password"
+                placeholderTextColor = "#000000"
+                autoCapitalize = "none"
+                onChangeText = {password => this.setState({ password })}
+                value= {this.state.password}/>
+              
+              <TouchableOpacity
+              style = {styles.submitButton}
+              onPress = {
+                () => this.login(this.state.email, this.state.password)
+              }>
+              <Text style = {styles.submitButtonText}> Login </Text>
+          </TouchableOpacity>
 
-            <TouchableOpacity
-               style = {styles.submitButton}
-               onPress = {
-                this._createaccount
-               }>
-               <Text style = {styles.submitButtonText}> Need Account? </Text>
-            </TouchableOpacity>
-
-    
-    
-          
-          </ScrollView>
-    
-        
+          <TouchableOpacity
+              style = {styles.submitButton}
+              onPress = {
+              this._createaccount
+              }>
+              <Text style = {styles.submitButtonText}> Need Account? </Text>
+          </TouchableOpacity>
         </View>
       );       
 

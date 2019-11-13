@@ -9,6 +9,7 @@ import Survey from '../screens/Survey'
 import Passport from '../screens/Passport'
 import Infographics from '../screens/Infographics'
 import Signup from '../screens/Signup'
+import SignupRole from '../screens/SignupRole'
 
 
 //add screens here
@@ -17,7 +18,8 @@ const AppStack = createStackNavigator({
   Survey: {screen: Survey},
   Passport: {screen: Passport},
   Infographics: {screen: Infographics},
-  Signup: {screen: Signup}
+  Signup: {screen: Signup},
+  Role: {screen: SignupRole}
 })
 const AuthStack = createStackNavigator({
   Login: {screen: LoginScreen}, 
@@ -34,6 +36,7 @@ export default createAppContainer(
     App: AppStack,
     Auth: AuthStack,
     Sign: Signup,
+    Role: SignupRole,
   },
   {
     initialRouteName: 'AuthLoading',
