@@ -2,7 +2,6 @@ import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import {AsyncStorage} from 'react-native';
 import  { Component } from 'react';
-import {Button} from 'native-base'
 import {
   Image,
   Platform,
@@ -20,7 +19,7 @@ import styles from './Styles.js'
 import { MonoText } from '../components/StyledText';
 import { tsConstructorType } from '@babel/types';
 
-export default class LoginScreen extends Component {
+export default class SignUpScreen extends Component {
   constructor(props) {
     super(props);
     this.state = { email: '' ,
@@ -28,7 +27,7 @@ export default class LoginScreen extends Component {
     };
   }
   static navigationOptions = {
-    title: 'Sign In',
+    title: 'Sign Up',
   };
   handleEmail = (text) => {
       this.setState({ email: text })
@@ -38,16 +37,16 @@ export default class LoginScreen extends Component {
   }
   _createaccount = async () => {
     await AsyncStorage.clear();
-    this.props.navigation.navigate('Sign');
+    this.props.navigation.navigate('Auth');
 };
 
   login = (email, pass) => {
+      console.log("hello")
     const newUser = {
       email: email,
       password: pass
     };
-    console.log("hello")
-    axios.post('https://powerful-savannah-08407.herokuapp.com/users/add', newUser)
+    axios.post('http://localhost:4003/users/add', newUser)
     .then(res => console.log(res.data));
       // alert('email: ' + email + ' password: ' + pass)
   }
@@ -74,8 +73,9 @@ export default class LoginScreen extends Component {
                   placeholderTextColor = "#000000"
                   autoCapitalize = "none"
                   onChangeText={email => this.setState({ email })}
-                  value= {this.state.email}/>
-                 
+                  value= {this.state.email}
+                  
+                  />
                   
                 <TextInput style = {styles.input}
                   underlineColorAndroid = "transparent"
@@ -100,7 +100,6 @@ export default class LoginScreen extends Component {
                }>
                <Text style = {styles.submitButtonText}> Need Account? </Text>
             </TouchableOpacity>
-
     
     
           

@@ -10,6 +10,7 @@ import Passport from '../screens/Passport'
 import Infographics from '../screens/Infographics'
 import Signup from '../screens/Signup'
 
+
 //add screens here
 const AppStack = createStackNavigator({
   Home: {screen: MainHome},
@@ -20,13 +21,19 @@ const AppStack = createStackNavigator({
 })
 const AuthStack = createStackNavigator({
   Login: {screen: LoginScreen}, 
+ 
+})
+const Signup = createStackNavigator({
+  Sign: {screen: SignupScreen}, 
+ 
 })
 
 export default createAppContainer(
   createSwitchNavigator({
     AuthLoading: AuthLoadingScreen,
     App: AppStack,
-    Auth: AuthStack
+    Auth: AuthStack,
+    Sign: Signup,
   },
   {
     initialRouteName: 'AuthLoading',
