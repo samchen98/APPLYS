@@ -2,6 +2,7 @@ import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import {AsyncStorage} from 'react-native';
 import  { Component } from 'react';
+import {Button} from 'native-base'
 import {
   Image,
   Platform,
@@ -73,9 +74,8 @@ export default class LoginScreen extends Component {
                   placeholderTextColor = "#000000"
                   autoCapitalize = "none"
                   onChangeText={email => this.setState({ email })}
-                  value= {this.state.email}
-                  
-                  />
+                  value= {this.state.email}/>
+                 
                   
                 <TextInput style = {styles.input}
                   underlineColorAndroid = "transparent"
@@ -100,6 +100,7 @@ export default class LoginScreen extends Component {
                }>
                <Text style = {styles.submitButtonText}> Need Account? </Text>
             </TouchableOpacity>
+
     
     
           
