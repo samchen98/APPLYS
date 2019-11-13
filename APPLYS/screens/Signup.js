@@ -30,6 +30,30 @@ export default class Signup extends React.Component{
             medications: []
         }
     }
+  //   static navigationOptions = {
+  //     title: 'Sign Up',
+  //   };
+  //   handleEmail = (text) => {
+  //       this.setState({ email: text })
+  //   }
+  //   handlePassword = (text) => {
+  //       this.setState({ password: text })
+  //   }
+  //   _createaccount = async () => {
+  //     await AsyncStorage.clear();
+  //     this.props.navigation.navigate('Auth');
+  // };
+  
+  //   login = (email, pass) => {
+  //       console.log("hello")
+  //     const newUser = {
+  //       email: email,
+  //       password: pass
+  //     };
+  //     axios.post('http://localhost:4003/users/add', newUser)
+  //     .then(res => console.log(res.data));
+  //       // alert('email: ' + email + ' password: ' + pass)
+  //   }
     render() {
         return(
             <View>
