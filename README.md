@@ -18,31 +18,34 @@ their parents/guardians to take a series of surveys through an app on their phon
 assess whether or not they are prepared to manage their health services and educate them if needed. 
 Other features of the app include medical passports and information pages.
 
-1. Getting started
-Prerequisites: The user needs to install Node.js, and react native. Instructions can be found here https://facebook.github.io/react-native/docs/getting-started  
-You can run the app with expo
-use the command: npm install -g expo-cli
-Installing: 
-If you want to develop on an android install android studios and install an emulator to run the app. https://developer.android.com/studio
-If you want to develop on ios you need which comes installed on mac xcode.
-You can also use expo to demo the app.
-Running locally:
-expo start
-Warranty:
+1.Getting started  
+Prerequisites:   The user needs to install Node.js, and react native. Instructions can be found here https://facebook.github.io/react-native/docs/getting-started    
+You can run the app with expo  
+use the command: npm install -g expo-cli  
+Installing:   
+If you want to develop on an android install android studios and install an emulator to run the app. https://developer.android.com/studio  
+If you want to develop on ios you need which comes installed on mac xcode.  
+You can also use expo to demo the app.  
+Running locally:  
+command:  
+expo start  
+npm run android
+   
+Warranty:  
 These instructions were tested and successful on 10-12-2019 by Eric Shyu on Windows 10.
 
 2.Testing
 
 3.Deployment
 
-4.Technologies used
-React Native
-Node.js
-MongoDB
-Jest
+4.Technologies used  
+React Native  
+Node.js  
+MongoDB  
+Jest  
 
-5.Contributing
-The repository: https://github.com/samchen98/APPLYS
+5.Contributing  
+The repository: https://github.com/samchen98/APPLYS  
 Trello: https://trello.com/b/KnJuV0d6/applys
 
 Use visual studio and the prettier code formatter.
@@ -51,16 +54,16 @@ https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 
 our website: http://applys.web.unc.edu/
 
-6.Authors:
--Sam Chen
--Sunnie Kwak
--Eric Shyu
+6.Authors:  
+-Sam Chen  
+-Sunnie Kwak  
+-Eric Shyu  
 
 7.License:
 plan on using an open source liscense.
 
-8.Acknowledgements:
--Maria Ferris
--Jeff Terrel
--Adam Franzen
+8.Acknowledgements:  
+-Maria Ferris  
+-Jeff Terrel  
+-Adam Franzen  
 -Delia Garcia
