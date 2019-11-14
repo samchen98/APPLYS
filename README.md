@@ -1,6 +1,5 @@
 # APPLYS
 
-TESTTEST
 
 routes we need:
 - create user // 
@@ -35,14 +34,17 @@ Warranty:
 These instructions were tested and successful on 10-12-2019 by Eric Shyu on Windows 10.
 
 2.Testing
+For testing we decided to use Jest. To run tests, type "jest" into the command line while in the root directory. To check jest coverage, run "jest --coverage"
 
 3.Deployment
+The express server is deployed on Heroku. The new developer can access heroku using a login, or being shared as a collaborator. Pre-production environments mainly consist of expo, where the user can run the application locally. The server can also be continously updated through heroku github. 
 
 4.Technologies used  
 React Native  
 Node.js  
 MongoDB  
 Jest  
+Heroku
 
 5.Contributing  
 The repository: https://github.com/samchen98/APPLYS  
