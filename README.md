@@ -51,15 +51,15 @@ https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 
 our website: http://applys.web.unc.edu/
 
-6.Authors
+6.Authors:
 -Sam Chen
 -Sunnie Kwak
 -Eric Shyu
 
-7.License
+7.License:
 plan on using an open source liscense.
 
-8.Acknowledgements
+8.Acknowledgements:
 -Maria Ferris
 -Jeff Terrel
 -Adam Franzen
