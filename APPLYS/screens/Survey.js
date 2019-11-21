@@ -70,4 +70,30 @@ export default class Survey extends React.Component{
 
 
 
+//Route to add questions for testing:
+// const questionsid = {
+//   id: 1,
+//   question: "what did the fox say?"
+// };
+// const temp = config.serversite;
 
+// axios.post(config.serversite + '/questions/getquestion', questionsid)
+// .then(res => {console.log(res)
+// }
+// )
+
+
+
+// Route to get questions from ID
+
+
+// const questionsid = {
+//   id: 1,
+//   question: "what did the fox say?"
+// };
+// const temp = config.serversite;
+
+// axios.post(config.serversite + '/questions/getquestion', questionsid)
+// .then(res => {console.log(res.data)
+// }
+// )

@@ -44,6 +44,7 @@ export default class LoginScreen extends Component {
 };
 
   login = (email, pass) => {
+
     const newUser = {
       email: email,
       password: pass
@@ -60,8 +61,9 @@ export default class LoginScreen extends Component {
       console.log("Email invalid")
     }
     });
-      // alert('email: ' + email + ' password: ' + pass)
+      
   }
+
   render(){
       return (
         <View style = {styles.container}>

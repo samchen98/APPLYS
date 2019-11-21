@@ -21,9 +21,11 @@ connection.once('open', function() {
 })
 
 const usersRouter = require('./routes/users');
+const questionsRouter = require('./routes/questions');
 
 
 app.use('/users', usersRouter);
+app.use('/questions', questionsRouter);
 
 app.listen(process.env.PORT || 5000)
 
