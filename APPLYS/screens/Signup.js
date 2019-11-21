@@ -1,3 +1,5 @@
+
+import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import {AsyncStorage} from 'react-native';
 import  { Component } from 'react';
@@ -176,8 +178,7 @@ export default class SignUpScreen extends Component {
       )
   }
 
-   
-  
+
   // _signInAsync = async () => {
   //   await AsyncStorage.setItem('userToken', 'abc');
   //   this.props.navigation.navigate('App');

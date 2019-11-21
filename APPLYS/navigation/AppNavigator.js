@@ -12,6 +12,7 @@ import Signup from '../screens/Signup'
 import SignupRole from '../screens/SignupRole'
 
 
+
 //add screens here
 const AppStack = createStackNavigator({
   Home: {screen: MainHome},
