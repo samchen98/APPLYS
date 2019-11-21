@@ -80,6 +80,7 @@ export default class LoginScreen extends Component {
               />
             </View>
             <TextInput style = {styles.input}
+                  
                   underlineColorAndroid = "transparent"
                   placeholder = "Email"
                   placeholderTextColor = "#000000"
@@ -87,8 +88,10 @@ export default class LoginScreen extends Component {
                   onChangeText={email => this.setState({ email })}
                   value= {this.state.email}/>
                  
-                  
+               
                 <TextInput style = {styles.input}
+                secureTextEntry={true}
+                  type = "password"
                   underlineColorAndroid = "transparent"
                   placeholder = "Password"
                   placeholderTextColor = "#000000"

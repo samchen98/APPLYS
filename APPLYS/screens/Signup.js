@@ -84,6 +84,7 @@ export default class SignUpScreen extends Component {
                   
                 <TextInput style = {styles.input}
                   underlineColorAndroid = "transparent"
+                  secureTextEntry={true}
                   placeholder = "Password"
                   placeholderTextColor = "#000000"
                   autoCapitalize = "none"
