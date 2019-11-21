@@ -5,7 +5,7 @@ import {
   ScrollView,
   View,
   Image,
-  DatePickerIOS
+  TextInput
 } from 'react-native';
 import axios from 'axios';
 import styles from '../styles/SignupStyles'
@@ -30,9 +30,9 @@ export default class SignUpScreen extends Component {
       password: "",
       diagnosis: [],
       allergies: [],
-      medications: [],
+      medications: "",
       userType: "patient",
-      showDatePicker: false
+      curmed: "",
     };
   }
   static navigationOptions = {
@@ -59,11 +59,23 @@ export default class SignUpScreen extends Component {
     //this.props.navigation.navigate('Auth');
   };
 
+  onSubmitHandler(event) {
+    console.log(event.nativeEvent.text)
+    //change to push into array form
+    this.setState({medications: event.nativeEvent.text})
+    //set curmed to blank
+  }
+
+  showMedications() {
+    return(
+      <Text>{this.state.medications}</Text>
+    )
+  }
 
   render() { 
     return(
         
-          <Container style = {{backgroundColor: "#c1ffa6"}}>
+          <Container style = {{backgroundColor: "#ffffff"}}>
             <Header transparent>
               <Left>
                 <Button transparent onPress = {() => this.props.navigation.navigate("Role")}>
@@ -140,19 +152,23 @@ export default class SignUpScreen extends Component {
                   onChangeText = {password => this.setState({ password:password })}
                   value= {this.state.password}/>
               </Item>
+            
+
+              <Item fixedLabel style={styles.formItem}>
+                  <Label>List your conditions:</Label>
+                  <TextInput
+                    onSubmitEditing={text => this.onSubmitHandler(text)}
+                  />
+              </Item>
+
+              <Text>List your medications:</Text>
+              <Text>{this.state.medications}</Text>
+              
+              <TextInput
+                    onSubmitEditing={(event) => this.onSubmitHandler(event)}/>
+              <Text>List your allergies:</Text>
+              <Input/>
             </Form>
-
-            <Item fixedLabel style={styles.formItem}>
-                <Label>List your conditions:</Label>
-                  <Input autoCapitalize = "word"
-                    onChangeText={email => this.setState({ email:email })}
-                    value= {this.state.email}/>
-            </Item>
-
-            <Text>List your medications:</Text>
-            <Input/>
-            <Text>List your allergies:</Text>
-            <Input/>
             <Button onPress = {this.createaccount}><Text>Next</Text></Button>
           
         </View>

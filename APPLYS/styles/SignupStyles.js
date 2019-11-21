@@ -40,15 +40,28 @@ export default StyleSheet.create({
         padding: 10,
         margin: 15,
         height: 90,
-        alignContent: "center"
+        width: 300,
+        backgroundColor: "white",
+        textAlign: "center",
+        justifyContent: 'center', 
+        alignItems: 'center',
+        borderRadius: 20,
+        shadowColor: 'rgba(0, 0, 0, 0.4)',
+        shadowOpacity: 0.7,
+        elevation: 3,
+        shadowRadius: 15,
+        shadowOffset : { width: 1, height: 13},
       },
       roletxt:{
         textAlign: "center",
-        fontSize: 30
+        fontSize: 30,
+        color: "#92e66c",
+        
       },
       iamtext:{
         margin: 20,
         fontSize: 40,
-        textAlign: "center"
+        textAlign: "center",
+        color: "white"
       },
 })

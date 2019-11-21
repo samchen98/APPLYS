@@ -17,7 +17,7 @@ export default class SignupRole extends Component {
     }
   render() {
     return (
-      <Container style = {{backgroundColor: "#c1ffa6"}}>
+      <Container style = {{backgroundColor: "#92e66c"}}>
         <Header transparent>
             <Left>
             </Left>
@@ -40,7 +40,7 @@ export default class SignupRole extends Component {
               style={styles.welcomeImage}
             />
         </View>
-        <View>
+        <View style = {{justifyContent: 'center', alignItems: 'center'}}> 
             <Text style = {styles.iamtext}>I am a...</Text>
             <Button style = {styles.roleBtn} onPress = {() => this.handlePress("patient")}><Text style = {styles.roletxt}>Patient</Text></Button>
             <Button style = {styles.roleBtn} onPress = {() => this.handlePress("parent")}><Text style = {styles.roletxt}>Parent</Text></Button>
