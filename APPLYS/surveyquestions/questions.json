@@ -8,6 +8,7 @@
             "Dinner",
             "Midday Snack"
             ],
+            "correctAns" : 0,
             "feedback" : "Breakfast is the most important meal of the day! Make sure to always eat a heft breakfast."
         },
         {
@@ -18,7 +19,8 @@
             "c2",
             "d2"
             ],
-            "feedback": "y"
+            "correctAns" : 1,
+            "feedback": "b2 is correct"
         },
         {
             "prompt": "question 3......",
@@ -28,7 +30,8 @@
             "c",
             "d"
             ],
-            "feedback": "q"
+            "correctAns" : 3,
+            "feedback": "d is correct"
         }
     ]
     

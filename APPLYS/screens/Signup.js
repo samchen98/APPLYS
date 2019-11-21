@@ -2,23 +2,21 @@ import React from 'react';
 import {AsyncStorage} from 'react-native';
 import  { Component } from 'react';
 import {
-  Platform,
   ScrollView,
-  StyleSheet,
-  Text,
   View,
-  TextInput
+  Image,
+  DatePickerIOS
 } from 'react-native';
 import axios from 'axios';
-import styles from './Styles.js'
+import styles from '../styles/SignupStyles'
 import layout from './LayoutStyles.js'
 import { MonoText } from '../components/StyledText';
 import { tsConstructorType } from '@babel/types';
 
-import {Button} from 'native-base';
+import { Container, Header, Left, Body, Right, Button, Icon, Title, Text, Form, Item, Input, Label } from 'native-base';
 import DatePicker from 'react-native-datepicker';
 import RNPickerSelect from 'react-native-picker-select';
-
+var moment = require('moment');
 export default class SignUpScreen extends Component {
   constructor(props) {
     super(props);
@@ -33,13 +31,14 @@ export default class SignUpScreen extends Component {
       diagnosis: [],
       allergies: [],
       medications: [],
-      userType: "patient"
+      userType: "patient",
+      showDatePicker: false
     };
   }
   static navigationOptions = {
     title: 'Sign Up',
   };
-  
+
   createaccount = () => {
     const newUser = {
       fname: this.state.fname,
@@ -48,7 +47,10 @@ export default class SignUpScreen extends Component {
       sex: this.state.sex,
       email: this.state.email,
       password: this.state.password,
-      userType: "patient"
+      userType: "patient",
+      conditions: [],
+      medications: [],
+      allergies: []
     };
     axios.post('https://powerful-savannah-08407.herokuapp.com/users/add', newUser)
     .then(res => console.log(res.data));
@@ -57,68 +59,104 @@ export default class SignUpScreen extends Component {
     //this.props.navigation.navigate('Auth');
   };
 
-  render() {
+
+  render() { 
     return(
-        <View style = {layout.contentContainer}>
-          <ScrollView>
-            <TextInput style = {styles.input}
-              underlineColorAndroid = "transparent"
-              placeholder = "First Name"
-              placeholderTextColor = "#000000"
-              autoCapitalize = "words"
-              onChangeText={fname => this.setState({ fname })}
-              value= {this.state.fname}/>
-              
-            <TextInput style = {styles.input}
-            underlineColorAndroid = "transparent"
-            placeholder = "Last Name"
-            placeholderTextColor = "#000000"
-            autoCapitalize = "words"
-            onChangeText = {lname => this.setState({ lname })}
-            value= {this.state.lname}/>
-
-            <Text>Date of Birth: </Text>
-            <DatePicker
-            style={{marginRight: 0}}
-            date={this.state.dob}
-            mode="date"
-            placeholder="Date of Birth"
-            format="YYYY-MM-DD"
-            minDate="1980-01-01"
-            maxDate="2010-01-01"
-            confirmBtnText="Confirm"
-            cancelBtnText="Cancel"
-            showIcon = {false}
-            onDateChange={(date) => {this.setState({dob: date})}}/>
-
-            <RNPickerSelect
-                style = {styles.input}
+        
+          <Container style = {{backgroundColor: "#c1ffa6"}}>
+            <Header transparent>
+              <Left>
+                <Button transparent onPress = {() => this.props.navigation.navigate("Role")}>
+                  <Icon name='arrow-back' />
+                  <Text>Back</Text>
+                </Button>
+              </Left>
+              <Body>
+                <Title>Header</Title>
+              </Body>
+              <Right>
+                <Button transparent onPress = {() => this.props.navigation.navigate("Login")}>
+                  <Text>Cancel</Text>
+                </Button>
+              </Right>
+            </Header>
+          
+          <View style = {styles.signupContainer}>
+            <Form style = {styles.formContainer}>
+              <Item fixedLabel style={styles.formItem}>
+                <Label>First Name</Label>
+                <Input onChangeText={fname => this.setState({ fname })}
+                      value= {this.state.fname}
+                      autoCapitalize = "words"/>
+              </Item>
+              <Item fixedLabel style={styles.formItem}>
+                <Label>Last Name</Label>
+                <Input autoCapitalize = "words"
+                      onChangeText = {lname => this.setState({ lname })}
+                      value= {this.state.lname}/>
+              </Item>
+              <Item fixedLabel style={styles.formItem}>
+                <Label >Date of Birth</Label>
+                <DatePicker
+                style = {styles.dobPicker}
+                customStyles={{
+                  dateInput: {
+                    marginLeft: 0,
+                    borderWidth: 0,
+                  },
+                  dateText:{
+                    fontSize: 16,
+                    textAlign: "left"
+                  }
+                }}
+                date={this.state.dob}
+                mode="date"
+                format="YYYY-MM-DD"
+                minDate="1980-01-01"
+                maxDate="2010-01-01"
+                confirmBtnText="Confirm"
+                cancelBtnText="Cancel"
+                showIcon = {false}
+                onDateChange={(date) => {this.setState({dob: date})}}/>
+              </Item>
+              <Item fixedLabel style={styles.formItem}>
+                <Label>Sex</Label>
+                <RNPickerSelect style = {styles}
                 onValueChange={(value) => {this.setState({sex:value})}}
                 items={[
-                    { label: 'Female', value: 'female' },
-                    { label: 'Male', value: 'male' },
+                    { label: 'Female', value: "female" },
+                    { label: 'Male', value: "male" },
                 ]}/>
+              </Item>
+              <Item fixedLabel style={styles.formItem}>
+                <Label>Email</Label>
+                  <Input autoCapitalize = "none"
+                    onChangeText={email => this.setState({ email:email })}
+                    value= {this.state.email}/>
+              </Item>
+              <Item fixedLabel style={styles.formItem}>
+                <Label>Password</Label>
+                <Input autoCapitalize = "none"
+                  onChangeText = {password => this.setState({ password:password })}
+                  value= {this.state.password}/>
+              </Item>
+            </Form>
 
-            <TextInput style = {styles.input}
-                underlineColorAndroid = "transparent"
-                placeholder = "Email"
-                placeholderTextColor = "#000000"
-                autoCapitalize = "none"
-                onChangeText={email => this.setState({ email:email })}
-                value= {this.state.email}/>
-                
-            <TextInput style = {styles.input}
-            underlineColorAndroid = "transparent"
-            placeholder = "Password"
-            placeholderTextColor = "#000000"
-            autoCapitalize = "none"
-            onChangeText = {password => this.setState({ password:password })}
-            value= {this.state.password}/>
+            <Item fixedLabel style={styles.formItem}>
+                <Label>List your conditions:</Label>
+                  <Input autoCapitalize = "word"
+                    onChangeText={email => this.setState({ email:email })}
+                    value= {this.state.email}/>
+            </Item>
 
-
-            <Button onPress = {this.createaccount}><Text>Submit</Text></Button>
-            </ScrollView>
+            <Text>List your medications:</Text>
+            <Input/>
+            <Text>List your allergies:</Text>
+            <Input/>
+            <Button onPress = {this.createaccount}><Text>Next</Text></Button>
+          
         </View>
+        </Container>
       )
   }
 

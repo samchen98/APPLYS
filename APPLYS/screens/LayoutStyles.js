@@ -18,7 +18,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     marginTop: 10,
     marginBottom: 20,
-    backgroundColor: '#123455',
+    backgroundColor: 'transparent',
   },
   getStartedContainer: {
     alignItems: 'center',

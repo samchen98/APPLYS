@@ -37,7 +37,7 @@ export default class LoginScreen extends Component {
       this.setState({ password: text })
   }
   _createaccount = async () => {
-    await AsyncStorage.clear();
+    //await AsyncStorage.clear();
     this.props.navigation.navigate('Role');
 };
 
@@ -48,7 +48,10 @@ export default class LoginScreen extends Component {
     };
     console.log("hello")
     axios.post('https://powerful-savannah-08407.herokuapp.com/users/add', newUser)
-    .then(res => console.log(res.data));
+    .then(function(res) {
+      console.log(res.data)
+      this.props.navigation.navigate('Home')
+    });
       
   }
   render(){
@@ -66,28 +69,28 @@ export default class LoginScreen extends Component {
             />
           </View>
           <TextInput style = {styles.input}
-                underlineColorAndroid = "transparent"
-                placeholder = "Email"
-                placeholderTextColor = "#000000"
-                autoCapitalize = "none"
-                onChangeText={email => this.setState({ email })}
-                value= {this.state.email}/>
-                
-                
-              <TextInput style = {styles.input}
-                underlineColorAndroid = "transparent"
-                placeholder = "Password"
-                placeholderTextColor = "#000000"
-                autoCapitalize = "none"
-                onChangeText = {password => this.setState({ password })}
-                value= {this.state.password}/>
-              
-              <TouchableOpacity
-              style = {styles.submitButton}
-              onPress = {
-                () => this.login(this.state.email, this.state.password)
-              }>
-              <Text style = {styles.submitButtonText}> Login </Text>
+            underlineColorAndroid = "transparent"
+            placeholder = "Email"
+            placeholderTextColor = "#000000"
+            autoCapitalize = "none"
+            onChangeText={email => this.setState({ email })}
+            value= {this.state.email}/>
+            
+            
+          <TextInput style = {styles.input}
+            underlineColorAndroid = "transparent"
+            placeholder = "Password"
+            placeholderTextColor = "#000000"
+            autoCapitalize = "none"
+            onChangeText = {password => this.setState({ password })}
+            value= {this.state.password}/>
+          
+          <TouchableOpacity
+          style = {styles.submitButton}
+          onPress = {
+            () => this.login(this.state.email, this.state.password)
+          }>
+          <Text style = {styles.submitButtonText}> Login </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
