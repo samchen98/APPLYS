@@ -54,16 +54,10 @@ export default class LoginScreen extends Component {
     .then(res => {if(res.data.success = true){
       console.log("nice!")
       this.props.navigation.navigate('App');
-      //
-
-
-
-
-
-      //
+   
     }
     else{
-      console.log("not nice!")
+      console.log("Email invalid")
     }
     });
       // alert('email: ' + email + ' password: ' + pass)
