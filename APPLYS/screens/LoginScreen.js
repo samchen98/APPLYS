@@ -20,6 +20,8 @@ import styles from './Styles.js'
 import { MonoText } from '../components/StyledText';
 import { tsConstructorType } from '@babel/types';
 
+const config = require("../config")
+
 export default class LoginScreen extends Component {
   constructor(props) {
     super(props);
@@ -46,9 +48,24 @@ export default class LoginScreen extends Component {
       email: email,
       password: pass
     };
+    const temp = config.serversite;
     console.log("hello")
-    axios.post('https://powerful-savannah-08407.herokuapp.com/users/add', newUser)
-    .then(res => console.log(res.data));
+    axios.post(config.serversite + '/users/auth', newUser)
+    .then(res => {if(res.data.success = true){
+      console.log("nice!")
+      this.props.navigation.navigate('App');
+      //
+
+
+
+
+
+      //
+    }
+    else{
+      console.log("not nice!")
+    }
+    });
       // alert('email: ' + email + ' password: ' + pass)
   }
   render(){
