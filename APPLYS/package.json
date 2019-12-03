@@ -10,8 +10,6 @@
   },
   "jest": {
     "preset": "@shelf/jest-mongodb"
-    
-
   },
   "dependencies": {
     "@expo/samples": "~3.0.3",
