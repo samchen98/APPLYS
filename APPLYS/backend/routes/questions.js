@@ -32,8 +32,8 @@ router.route('/postquestion').post((req, res) => {
 
 });
 
-router.route('/getquestion').post((req, res) => {
-    console.log("is this hit?");
+router.route('/getquestion').get((req, res) => {
+    console.log("getQ");
   
     const { body } = req;
     let {

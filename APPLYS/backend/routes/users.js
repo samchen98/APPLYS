@@ -7,8 +7,6 @@ let User = require('../models/user.model.js');
 //     .catch(err => res.status(400).json('Error: ' + err));
 // });
 router.route('/auth').post((req, res) => {
-  console.log("is this hit?");
-
   const { body } = req;
   let {
     fname,
@@ -75,8 +73,6 @@ router.route('/auth').post((req, res) => {
 
 
 router.route('/add').post((req, res) => {
-  console.log("is this hit?");
-
   const { body } = req;
   let {
     fname,
