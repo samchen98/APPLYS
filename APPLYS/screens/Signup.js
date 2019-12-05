@@ -68,7 +68,7 @@ export default class SignUpScreen extends Component {
         axios.post(config.serversite + '/users/add', newUser)
       .then(res => {
         this.setState({
-          textstuff: "Create account sucess!"
+          textstuff: "Create account success!"
         })
         console.log(res.data)}
         );
