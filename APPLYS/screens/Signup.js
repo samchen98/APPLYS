@@ -50,17 +50,32 @@ export default class SignUpScreen extends Component {
     const temp = config.serversite;
 
     console.log(pass.length)
-    if(pass.length < 10){
+    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if(!re.test(email)){
       this.setState({
-        textstuff: 'THE NEW TEXT GOES HERE'
+        textstuff: 'Email is invalid'
       })
     }
     else{
-      axios.post(config.serversite + '/users/add', newUser)
-
-    .then(res => console.log(res.data));
-
+      if(pass.length < 10){
+        this.setState({
+          textstuff: 'Password must be at least 10 characters long'
+        })
+      }
+     
+      else{
+        axios.post(config.serversite + '/users/add', newUser)
+      .then(res => {
+        this.setState({
+          textstuff: "Create account sucess!"
+        })
+        console.log(res.data)}
+        );
+      }
     }
+
+    
     
       // alert('email: ' + email + ' password: ' + pass)
   }
