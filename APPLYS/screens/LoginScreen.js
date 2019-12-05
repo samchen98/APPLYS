@@ -89,6 +89,8 @@ export default class LoginScreen extends Component {
             
             
           <TextInput style = {styles.input}
+          secureTextEntry={true}
+          type = "password"
             underlineColorAndroid = "transparent"
             placeholder = "Password"
             placeholderTextColor = "#000000"

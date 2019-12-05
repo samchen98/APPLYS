@@ -24,6 +24,7 @@ export default class SignUpScreen extends Component {
     super(props);
     this.state = { email: '' ,
     password:'',
+    textstuff:'',
     };
   }
   static navigationOptions = {
@@ -47,17 +48,27 @@ export default class SignUpScreen extends Component {
       password: pass
     };
     const temp = config.serversite;
-   
 
-    
-    axios.post(config.serversite + '/users/auth', newUser)
+    console.log(pass.length)
+    if(pass.length < 10){
+      this.setState({
+        textstuff: 'THE NEW TEXT GOES HERE'
+      })
+    }
+    else{
+      axios.post(config.serversite + '/users/add', newUser)
 
     .then(res => console.log(res.data));
+
+    }
+    
       // alert('email: ' + email + ' password: ' + pass)
   }
   render(){
       return (
+       
         <View style = {styles.container}>
+            
           <ScrollView
             style={styles.container}
             contentContainerStyle={styles.contentContainer}>
@@ -83,6 +94,8 @@ export default class SignUpScreen extends Component {
                   />
                   
                 <TextInput style = {styles.input}
+                secureTextEntry={true}
+                type = "password"
                   underlineColorAndroid = "transparent"
                   placeholder = "Password"
                   placeholderTextColor = "#000000"
@@ -95,8 +108,11 @@ export default class SignUpScreen extends Component {
                onPress = {
                   () => this.login(this.state.email, this.state.password)
                }>
-               <Text style = {styles.submitButtonText}> Login </Text>
+               <Text style = {styles.submitButtonText}> Create Account </Text>
             </TouchableOpacity>
+
+            <Text style={{fontSize: 60},{textAlign: "center"}}>{this.state.textstuff}</Text>
+{/* 
 
             <TouchableOpacity
                style = {styles.submitButton}
@@ -104,7 +120,7 @@ export default class SignUpScreen extends Component {
                 this._createaccount
                }>
                <Text style = {styles.submitButtonText}> Need Account? </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
     
     
           
