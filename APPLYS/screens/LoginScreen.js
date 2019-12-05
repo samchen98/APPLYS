@@ -50,7 +50,9 @@ export default class LoginScreen extends Component {
       password: pass
     };
     const temp = config.serversite;
-    console.log("hello")
+    console.log(pass.length)
+
+    
     axios.post(config.serversite + '/users/auth', newUser)
     .then(res => {if(res.data.success = true){
       console.log("nice!")

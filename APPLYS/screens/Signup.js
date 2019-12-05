@@ -15,7 +15,7 @@ import {
 import axios from 'axios';
 import MainHome from './MainHome';
 import styles from './Styles.js'
-
+const config = require("../config")
 import { MonoText } from '../components/StyledText';
 import { tsConstructorType } from '@babel/types';
 
@@ -46,7 +46,12 @@ export default class SignUpScreen extends Component {
       email: email,
       password: pass
     };
-    axios.post('http://localhost:4003/users/add', newUser)
+    const temp = config.serversite;
+   
+
+    
+    axios.post(config.serversite + '/users/auth', newUser)
+
     .then(res => console.log(res.data));
       // alert('email: ' + email + ' password: ' + pass)
   }
