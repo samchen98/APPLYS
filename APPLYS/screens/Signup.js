@@ -7,12 +7,12 @@ import {
   Platform,
   ScrollView,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
   TextInput
 } from 'react-native';
 import axios from 'axios';
+import { Button, Icon, Title, Text } from 'native-base';
 import MainHome from './MainHome';
 import styles from './Styles.js'
 const config = require("../config")
@@ -22,9 +22,14 @@ import { tsConstructorType } from '@babel/types';
 export default class SignUpScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = { email: '' ,
-    password:'',
-    textstuff:'',
+    this.state = { 
+      fname: '',
+      lname: '',
+      email: '' ,
+      password:'',
+      userType:  this.props.navigation.getParam('userType', 'NO-ID'),
+      textstuff:'',
+      physemail: null,
     };
   }
   static navigationOptions = {
@@ -39,13 +44,16 @@ export default class SignUpScreen extends Component {
   _createaccount = async () => {
     await AsyncStorage.clear();
     this.props.navigation.navigate('Auth');
-};
+  };
 
-  login = (email, pass) => {
-      console.log("hello")
+  signup = (fname, lname, email, pass, physemail) => {
     const newUser = {
+      fname: fname,
+      lname: lname,
       email: email,
-      password: pass
+      password: pass,
+      userType: this.state.userType,
+      physemail: physemail
     };
     const temp = config.serversite;
 
@@ -62,28 +70,35 @@ export default class SignUpScreen extends Component {
         this.setState({
           textstuff: 'Password must be at least 10 characters long'
         })
-      }
-     
+      }  
       else{
-        axios.post(config.serversite + '/users/add', newUser)
+      axios.post(config.serversite + '/users/add', newUser)
       .then(res => {
-        this.setState({
-          textstuff: "Create account success!"
-        })
-        console.log(res.data)}
-        );
+        console.log(res.data)
+        this.props.navigation.navigate('Login');
+      });
       }
     }
-
-    
-    
-      // alert('email: ' + email + ' password: ' + pass)
   }
+
+  patientAddOn() {
+    if(this.state.userType == "patient") {
+      return(
+        <TextInput style = {styles.input}
+                    underlineColorAndroid = "transparent"
+                    placeholder = " Physician's Email"
+                    placeholderTextColor = "#000000"
+                    autoCapitalize = "none"
+                    onChangeText={physemail => this.setState({ physemail })}
+                    value= {this.state.physemail} />
+      )
+    }
+  }
+
   render(){
+    console.log("type " + this.state.userType )
       return (
-       
         <View style = {styles.container}>
-            
           <ScrollView
             style={styles.container}
             contentContainerStyle={styles.contentContainer}>
@@ -97,51 +112,51 @@ export default class SignUpScreen extends Component {
                 }
                 style={styles.welcomeImage}
               />
-            </View>
-            <TextInput style = {styles.input}
-                  underlineColorAndroid = "transparent"
-                  placeholder = "Email"
-                  placeholderTextColor = "#000000"
-                  autoCapitalize = "none"
-                  onChangeText={email => this.setState({ email })}
-                  value= {this.state.email}
+              </View>
+              <TextInput style = {styles.input}
+                    underlineColorAndroid = "transparent"
+                    placeholder = "First Name"
+                    placeholderTextColor = "#000000"
+                    autoCapitalize = "word"
+                    onChangeText={fname => this.setState({ fname })}
+                    value= {this.state.fname} />
+
+              <TextInput style = {styles.input}
+                    underlineColorAndroid = "transparent"
+                    placeholder = "Last Name"
+                    placeholderTextColor = "#000000"
+                    autoCapitalize = "word"
+                    onChangeText={lname => this.setState({ lname })}
+                    value= {this.state.lname} />
+
+              <TextInput style = {styles.input}
+                    underlineColorAndroid = "transparent"
+                    placeholder = "Email"
+                    placeholderTextColor = "#000000"
+                    autoCapitalize = "none"
+                    onChangeText={email => this.setState({ email })}
+                    value= {this.state.email} />
                   
-                  />
-                  
-                <TextInput style = {styles.input}
+              <TextInput style = {styles.input}
                 secureTextEntry={true}
                 type = "password"
-                  underlineColorAndroid = "transparent"
-                  placeholder = "Password"
-                  placeholderTextColor = "#000000"
-                  autoCapitalize = "none"
-                  onChangeText = {password => this.setState({ password })}
-                  value= {this.state.password}/>
-                
-                <TouchableOpacity
-               style = {styles.submitButton}
-               onPress = {
-                  () => this.login(this.state.email, this.state.password)
-               }>
-               <Text style = {styles.submitButtonText}> Create Account </Text>
-            </TouchableOpacity>
+                underlineColorAndroid = "transparent"
+                placeholder = "Password"
+                placeholderTextColor = "#000000"
+                autoCapitalize = "none"
+                onChangeText = {password => this.setState({ password })}
+                value= {this.state.password}/>
+              
+              {this.patientAddOn()}
+
+              <Button
+                style = {styles.submitButton}
+                onPress = {() => this.signup(this.state.fname, this.state.lname, this.state.email, this.state.password, this.state.physemail)}>
+                  <Text style = {styles.submitButtonText}> Create Account </Text>
+              </Button>
 
             <Text style={{fontSize: 60},{textAlign: "center"}}>{this.state.textstuff}</Text>
-{/* 
-
-            <TouchableOpacity
-               style = {styles.submitButton}
-               onPress = {
-                this._createaccount
-               }>
-               <Text style = {styles.submitButtonText}> Need Account? </Text>
-            </TouchableOpacity> */}
-    
-    
-          
           </ScrollView>
-    
-        
         </View>
       );       
 

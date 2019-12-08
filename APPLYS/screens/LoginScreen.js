@@ -40,21 +40,23 @@ export default class LoginScreen extends Component {
   _createaccount = async () => {
     //await AsyncStorage.clear();
     this.props.navigation.navigate('Role');
-};
+  };
 
   login = (email, pass) => {
-
     const newUser = {
       email: email,
       password: pass
     };
     const temp = config.serversite;
-    console.log(pass.length)
 
     axios.post(config.serversite + '/users/auth', newUser)
     .then(res => {if(res.data.success = true){
-      console.log("nice!")
-      this.props.navigation.navigate('App');
+      if(res.data.message.userType == "patient"){
+        this.props.navigation.navigate('App');
+      }
+      else if(res.data.message.userType == "physician"){
+        this.props.navigation.navigate('Phys');
+      }
     }
     else{
       console.log("Email invalid")

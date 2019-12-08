@@ -10,9 +10,7 @@ import layout from './LayoutStyles'
 import { Container, Header, Left, Body, Right, Button, Icon, Title, Text } from 'native-base';
 export default class SignupRole extends Component {
     handlePress(type) {
-        if(type == "patient"){
-            this.props.navigation.navigate('Sign');
-        }
+      this.props.navigation.navigate('Sign', {userType: type});
         
     }
   render() {

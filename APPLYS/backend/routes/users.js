@@ -9,11 +9,8 @@ let User = require('../models/user.model.js');
 router.route('/auth').post((req, res) => {
   const { body } = req;
   let {
-    fname,
-    lname,
     email,
     password,
-    userType
   } = body;
   
   
@@ -51,7 +48,7 @@ router.route('/auth').post((req, res) => {
       });
     }
     const user = users[0];
-
+    console.log(user)
     if (!user.validPassword(password)) {
       return res.send({
         success: false,
@@ -61,7 +58,7 @@ router.route('/auth').post((req, res) => {
     else{
       return res.send({
         success: true,
-        message: 'Valid sign in',
+        message: user,
         
       });
     }
@@ -79,10 +76,10 @@ router.route('/add').post((req, res) => {
     lname,
     email,
     password,
-    userType
+    userType,
+    physemail
   } = body;
   
-  console.log(email);
   if (!email) {
     return res.send({
       success: false,
@@ -123,6 +120,7 @@ router.route('/add').post((req, res) => {
     newUser.lname = lname;
     newUser.userType = userType;
     newUser.email = email;
+    newUser.physemail = physemail;
     newUser.password = newUser.generateHash(password);
     newUser.save((err, user) => {
       if (err) {
