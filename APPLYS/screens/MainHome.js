@@ -11,7 +11,11 @@ import {
     View,
     TextInput
   } from 'react-native';
-import styles from './Styles.js'
+  
+
+import styles from '../styles/MainHomeStyles'
+import { tsConstructorType } from '@babel/types';
+
 
 
 export default class MainHome extends React.Component{
@@ -33,31 +37,36 @@ export default class MainHome extends React.Component{
     };
     render(){
         return(
-            <View style = {styles.container}>
+            <View style = {styles.maindiv}>
                 <ScrollView
                 style={styles.container}
                 contentContainerStyle={styles.contentContainer}>
                     <View style = {styles.container}>
-                        <Text>THE HOME SCREEN</Text>
+
+                        <View><Text style={ styles.maintext}>Welcome</Text></View>
+                    
+
+
                         <TouchableOpacity
-                            style = {styles.submitButton}
+                             style = {styles.roleBtn}
                             onPress = {() => this.props.navigation.navigate("Survey")}>
-                            <Text style = {styles.submitButtonText}> Survey </Text>
+                            <Text style = {styles.roletxt}> Survey </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity
+                        {/* <TouchableOpacity
                             style = {styles.submitButton}
                             onPress = {() => this.props.navigation.navigate("Passport")}>
                             <Text style = {styles.submitButtonText}> Medical Passport </Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
+                         
                         <TouchableOpacity
-                            style = {styles.submitButton}
+                             style = {styles.roleBtn}
                             onPress = {() => this.props.navigation.navigate("Infographics")}>
-                            <Text style = {styles.submitButtonText}> Infographics </Text>
+                            <Text style = {styles.roletxt}> Infographics </Text>
                         </TouchableOpacity>
                         <TouchableOpacity
-                            style = {styles.submitButton}
+                             style = {styles.roleBtn}
                             onPress = {this._signOutAsync}>
-                            <Text style = {styles.submitButtonText}> Sign Out </Text>
+                            <Text style = {styles.roletxt}> Sign Out </Text>
                         </TouchableOpacity>
                     </View>
                     
