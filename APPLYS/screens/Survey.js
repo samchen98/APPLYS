@@ -11,57 +11,116 @@ import {
   } from 'react-native';
 import styles from './Styles.js'
 import {Button} from 'native-base'
+import axios from 'axios';
 import QuestionGenerator from '../components/QuestionGenerator.js';
 import MainHome from './MainHome.js';
 import FeedbackGenerator from '../components/FeedbackGenerator.js';
-const questions = require('../surveyquestions/questions.json');
+import SurveyDone from './SurveyDone'
+//const questions = require('../surveyquestions/questions.json');
+const config = require("../config")
 
 export default class Survey extends React.Component{
     constructor(props) {
         super(props);
-        this.state = { 
-          qnum : 0,
+        this.state = {
+          questiongroup: {},
           answerarr: [],
           isQuestion: true,
-          correct : true
+          correct : false,
+          isEnd: false,
+          id: 1,
+          numCor: 0,
+          numAns: 0,
         };
+        this.getQuestions = this.getQuestions.bind(this)
+        this.componentDidMount = this.componentDidMount.bind(this)
+        this.updateQuestion = this.updateQuestion.bind(this)
+        
     }
 
-    getAnswers = () => {
-      var answerarr = []
-      var answers = questions.question[this.state.qnum].answers
-      answers.map(function(answer){
-        answerarr.push(answer)        
+    componentDidMount() {
+     // axios.get(config.serversite + '/questions/getSize')
+
+      axios.get(config.serversite + '/questions/getquestion', {
+        params: {
+          id: this.state.id
+        }
       })
-      return answerarr
+      .then((response) =>{
+        console.log(response.data.message);
+        if(response.data.message == undefined) {
+          this.setState({isEnd: true})
+        }
+        else{
+          this.setState({questiongroup: response.data.message, answerarr: response.data.message.answers, id : this.state.id + 1})
+        } 
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
     }
 
-    getFeedback = () => {
-      console.log(this.state.isQuestion)
-      this.setState({isQuestion: !this.state.isQuestion})
+    getQuestions() {
+      axios.get(config.serversite + '/questions/getquestion', {
+        params: {
+          id: this.state.id
+        }
+      })
+      .then((response) =>{
+        console.log("upd" + this.state.id)
+        if(response.data.message == undefined) {
+          this.setState({isEnd: true})
+        }
+        else{
+          this.setState({questiongroup: response.data.message, answerarr: response.data.message.answers, id : this.state.id + 1})
+        } 
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+        if(this.state.isEnd == false){
+          this.setState({isEnd: true})
+        }
+        
+      })
     }
+
+    getFeedback = (cor) => {
+      if(cor){
+        this.setState({correct: true, numAns : this.state.numAns + 1, numCor: this.state.numCor + 1, isQuestion: !this.state.isQuestion})
+      }
+      else{
+        this.setState({correct: false, numAns : this.state.numAns + 1, isQuestion: !this.state.isQuestion})
+      }
+    }
+
     updateQuestion = () => {
-      this.setState({isQuestion: !this.state.isQuestion, qnum : this.state.qnum + 1})
+      this.setState({isQuestion: !this.state.isQuestion,})
+      this.getQuestions()
     }
     
     render(){
-      if(questions.question.length > this.state.qnum) {
+      if(!this.state.isEnd) {
         if(this.state.isQuestion){
-          var answerarr = this.getAnswers()
           return(
-            <QuestionGenerator getFeedback = {this.getFeedback} questionnum = {this.state.qnum} question = {questions.question[this.state.qnum].prompt} answerarr = {answerarr} />
+            <View>
+              
+            <QuestionGenerator getFeedback = {this.getFeedback} questiongroup = {this.state.questiongroup} answerarr = {this.state.answerarr} />
+            </View>
+
           )
         }
         else{
           return(
-            <FeedbackGenerator updateQuestion = {this.updateQuestion} feedback = {questions.question[this.state.qnum].feedback}/>
+            <FeedbackGenerator correct = {this.state.correct} feedback = {this.state.questiongroup.feedback} updateQuestion = {this.updateQuestion} />
           )
         }
       }
       else{
         return(
-          <MainHome/>
-        )
+          <SurveyDone cor = {this.state.numCor} tot = {this.state.numAns}/>
+          )
       }
     }
 }

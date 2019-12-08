@@ -13,7 +13,6 @@ import {
   TextInput
 } from 'react-native';
 import axios from 'axios';
-import MainHome from './MainHome';
 import styles from './Styles.js'
 import layout from './LayoutStyles'
 
@@ -50,12 +49,10 @@ export default class LoginScreen extends Component {
       password: pass
     };
     const temp = config.serversite;
-    console.log("hello")
     axios.post(config.serversite + '/users/auth', newUser)
     .then(res => {if(res.data.success = true){
       console.log("nice!")
       this.props.navigation.navigate('App');
-   
     }
     else{
       console.log("Email invalid")

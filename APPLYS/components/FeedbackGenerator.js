@@ -10,13 +10,20 @@ import {
     TextInput
   } from 'react-native';
 import {Button} from 'native-base'
+import Survey from '../screens/Survey'
 
 export default class FeedbackGenerator extends React.Component{
     constructor(props) {
         super(props);
         this.state = { 
-          correct: true
+          correct: this.props.correct
         };
+    }
+
+    handlePress = () => {
+        return(
+            <Survey/>
+        )
     }
 
     render(){
@@ -25,7 +32,7 @@ export default class FeedbackGenerator extends React.Component{
                 <View>
                     <Text> Correct! </Text>
                     <Text> {this.props.feedback} </Text>
-                    <Button onPress = {this.props.updateQuestion}><Text>Next</Text></Button>
+                    <Button onPress = {this.props.updateQuestion}><Text>Continue</Text></Button>
                 </View>
             )
         }
@@ -34,6 +41,7 @@ export default class FeedbackGenerator extends React.Component{
                 <View>
                     <Text> Incorrect! </Text>
                     <Text> {this.props.feedback} </Text>
+                    <Button onPress = {this.props.updateQuestion}><Text>Continue</Text></Button>
                 </View>
             )
         }
