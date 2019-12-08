@@ -35,45 +35,55 @@ export default class MainHome extends React.Component{
         await AsyncStorage.clear();
         this.props.navigation.navigate('Auth');
     };
+      
+
     render(){
         return(
-            <View style = {styles.maindiv}>
-                <ScrollView
-                style={styles.container}
-                contentContainerStyle={styles.contentContainer}>
-                    <View style = {styles.container}>
+           
 
-                        <View><Text style={ styles.maintext}>Welcome</Text></View>
-                    
+                    <View style = {styles.maindiv}>
+                        <View style={{flexDirection:"row"}}>
+                        <View style ={styles.infodiv} >
+                            <Text style={ styles.maintext}>Patient: Name {"\n"} Date of Birth{"\n"} Hospital{"\n"}Last Checkin</Text> 
+                            {/* <Text style={ styles.maintext}>Date of Birth \n</Text>
+                            <Text style={ styles.maintext}>Hospital \n</Text>
+                            <Text style={ styles.maintext}>Last Checkin \n</Text> */}
+                        </View>
+                        </View>
 
-
-                        <TouchableOpacity
+                        <ScrollView horizontal={true}
+                        pagingEnabled={true}>
+                            <View style={styles.buttondiv}>
+                            <TouchableOpacity
                              style = {styles.roleBtn}
                             onPress = {() => this.props.navigation.navigate("Survey")}>
                             <Text style = {styles.roletxt}> Survey </Text>
                         </TouchableOpacity>
-                        {/* <TouchableOpacity
-                            style = {styles.submitButton}
-                            onPress = {() => this.props.navigation.navigate("Passport")}>
-                            <Text style = {styles.submitButtonText}> Medical Passport </Text>
-                        </TouchableOpacity> */}
+                        
                          
                         <TouchableOpacity
                              style = {styles.roleBtn}
                             onPress = {() => this.props.navigation.navigate("Infographics")}>
                             <Text style = {styles.roletxt}> Infographics </Text>
                         </TouchableOpacity>
+                            </View>
+                        
+                        </ScrollView>
+
+                        
                         <TouchableOpacity
                              style = {styles.roleBtn}
                             onPress = {this._signOutAsync}>
                             <Text style = {styles.roletxt}> Sign Out </Text>
                         </TouchableOpacity>
+                         
+                        
                     </View>
                     
-                </ScrollView>
+               
         
             
-            </View>
+            
             
         )
         
