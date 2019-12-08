@@ -15,7 +15,7 @@ import {
 import axios from 'axios';
 import MainHome from './MainHome';
 import styles from './Styles.js'
-
+const config = require("../config")
 import { MonoText } from '../components/StyledText';
 import { tsConstructorType } from '@babel/types';
 
@@ -24,6 +24,7 @@ export default class SignUpScreen extends Component {
     super(props);
     this.state = { email: '' ,
     password:'',
+    textstuff:'',
     };
   }
   static navigationOptions = {
@@ -46,13 +47,43 @@ export default class SignUpScreen extends Component {
       email: email,
       password: pass
     };
-    axios.post('http://localhost:4003/users/add', newUser)
-    .then(res => console.log(res.data));
+    const temp = config.serversite;
+
+    console.log(pass.length)
+    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if(!re.test(email)){
+      this.setState({
+        textstuff: 'Email is invalid'
+      })
+    }
+    else{
+      if(pass.length < 10){
+        this.setState({
+          textstuff: 'Password must be at least 10 characters long'
+        })
+      }
+     
+      else{
+        axios.post(config.serversite + '/users/add', newUser)
+      .then(res => {
+        this.setState({
+          textstuff: "Create account success!"
+        })
+        console.log(res.data)}
+        );
+      }
+    }
+
+    
+    
       // alert('email: ' + email + ' password: ' + pass)
   }
   render(){
       return (
+       
         <View style = {styles.container}>
+            
           <ScrollView
             style={styles.container}
             contentContainerStyle={styles.contentContainer}>
@@ -78,6 +109,8 @@ export default class SignUpScreen extends Component {
                   />
                   
                 <TextInput style = {styles.input}
+                secureTextEntry={true}
+                type = "password"
                   underlineColorAndroid = "transparent"
                   placeholder = "Password"
                   placeholderTextColor = "#000000"
@@ -90,8 +123,11 @@ export default class SignUpScreen extends Component {
                onPress = {
                   () => this.login(this.state.email, this.state.password)
                }>
-               <Text style = {styles.submitButtonText}> Login </Text>
+               <Text style = {styles.submitButtonText}> Create Account </Text>
             </TouchableOpacity>
+
+            <Text style={{fontSize: 60},{textAlign: "center"}}>{this.state.textstuff}</Text>
+{/* 
 
             <TouchableOpacity
                style = {styles.submitButton}
@@ -99,7 +135,7 @@ export default class SignUpScreen extends Component {
                 this._createaccount
                }>
                <Text style = {styles.submitButtonText}> Need Account? </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
     
     
           
