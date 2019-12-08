@@ -37,16 +37,36 @@ export default StyleSheet.create({
         flex: 1, 
         justifyContent: "center",
         alignItems: "center",
-      },
+        //flexDirection:"row",
+        display:'flex',
+      }, 
       maintext:{
-          padding: 20,
-          fontSize:40,
+          padding: 10,
+          fontSize:25,
           justifyContent: "center",
           alignItems: "center",
           textAlign: "center",
           color: 'black',
-         // fontFamily: "Indie Flower",
 
-
+      },
+      infodiv:{
+        backgroundColor:'white', 
+        flex: 3, 
+        justifyContent: "center",
+        alignItems: "center",
+        flexBasis:1000,
+        flexDirection:"column",
+      },
+      buttondiv:{
+        backgroundColor: '#7303FC', 
+        flex: 1, 
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection:"column",
+        margin:0,
+      },
+      signoutdiv:{
+        backgroundColor: '#7303FC', 
+        flex:1,
       }
 })
