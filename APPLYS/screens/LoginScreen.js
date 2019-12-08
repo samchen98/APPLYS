@@ -44,6 +44,8 @@ export default class LoginScreen extends Component {
 
   login = (email, pass) => {
 
+    
+
     const newUser = {
       email: email,
       password: pass

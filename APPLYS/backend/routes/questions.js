@@ -49,12 +49,38 @@ router.route('/getquestion').get((req, res) => {
 
 });
 
+router.route('/removequestion').get((req, res) => {
+  const { body } = req;
+  let {
+    id,
+  } = body;
+  console.log(req.query.id)
+
+  Question.findByIdAndRemove(req.query.id, (err) => {
+    if (err) return res.send(err);
+    console.log("hit")
+    return res.json({ success: true });
+  });
+});
+
 // router.route('/getSize').get((req, res) => {
 //   db.collection.count({}, function(error, numOfDocs) {
 //     console.log('I have '+numOfDocs+' documents in my collection');
 //     // ..
 //   });
 // });
+router.route('/getSize').get((req, res) => {
+  Question.find().exec(function (err, results) {
+    var count = results.length
+    console.log(count);
+    return res.send({
+      count
+    });
+  });
+
+});
+
+
 
 
 module.exports = router;

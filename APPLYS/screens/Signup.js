@@ -75,9 +75,6 @@ export default class SignUpScreen extends Component {
       }
     }
 
-    
-    
-      // alert('email: ' + email + ' password: ' + pass)
   }
   render(){
       return (
