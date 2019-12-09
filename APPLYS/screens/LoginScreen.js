@@ -43,11 +43,12 @@ export default class LoginScreen extends Component {
   };
 
   async storePatient(data) {
+    console.log(data)
     await AsyncStorage.setItem('userToken', "1");
     await AsyncStorage.setItem('fname', data.fname);
     await AsyncStorage.setItem('lname', data.lname);
     await AsyncStorage.setItem('email', data.email);
-    await AsyncStorage.setItem('score', data.score);
+    await AsyncStorage.setItem('score', data.surveyScore);
     await AsyncStorage.setItem('physemail', data.physemail);
     return
   }
