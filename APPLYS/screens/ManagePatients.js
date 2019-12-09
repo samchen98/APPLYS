@@ -48,16 +48,25 @@ export default class ManagePatients extends React.Component{
                 style={styles.container}
                 contentContainerStyle={styles.contentContainer}>
                     <View style = {styles.container}>
-                        <Text>MANAGE PATIENTS SCREEN</Text>
                         <ScrollView>
                             {this.state.parr.map(bundle =>
-                                <Panel title= {bundle.fname.concat(" " , bundle.lname)}>
-                                    <Text>{bundle.email}</Text>
-                                    <Text>{bundle.surveyScore}</Text>
+                                <Panel key={bundle.fname} title= {bundle.fname.concat(" " , bundle.lname)}>
+                                    <Text style = {{fontFamily: 'nunito'}} key = {bundle.email}>Email: {bundle.email}</Text>
+                                    <Text style = {{fontFamily: 'nunito'}} key={bundle.surveyScore}>Score: {bundle.surveyScore}</Text>
+                                    <Text style = {{fontFamily: 'nunito-bold', marginTop: 5}} key={bundle.surveyScore}>Missed Questions:</Text>
                                     {bundle.incorrectAns.map(q =>
-                                    <Text>{q}</Text>
+                                    <Text style = {{fontFamily: 'nunito'}} key ={q}>{q}</Text>
                                 ) }
-                                </Panel>) }
+                                <View
+                                key ={bundle}
+                                style={{
+                                paddingTop: 8,
+                                  borderBottomColor: 'purple',
+                                  borderBottomWidth: 1,
+                                }}
+                              />
+                                </Panel>
+                                ) }
                         </ScrollView>
                     </View>
                     

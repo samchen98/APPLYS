@@ -8,7 +8,7 @@ import {
     View,
     TextInput
 } from 'react-native';
-import styles from './Styles.js'
+import styles from '../styles/PhysStyle'
 import { Button, Icon, Title, Text } from 'native-base';
 import Panel from './Panel'
 import axios from 'axios';
@@ -36,25 +36,38 @@ export default class ManagePatients extends React.Component{
           })
     }
 
+    addQuestion() {
+
+    }
+
     render(){
         console.log(this.state.qarr)
         return(
             <View style = {styles.container}>
                 <ScrollView
                 style={styles.container}
-                contentContainerStyle={styles.contentContainer}>
+                >
                     <View style = {styles.container}>
-                        <Text>MANAGE Survey SCREEN</Text>
-                        <Button><Text>Add a survey question</Text></Button>
+                        <Button style = {{marginBottom: 10, backgroundColor: "purple", justifyContent: 'center'}} onPress = {() => this.addQuestion()}><Text>Add New Question</Text></Button>
                         <ScrollView style={styles.container}>
                             {this.state.qarr.map(bundle =>
-                            <Panel title={bundle.question}>
-                                <Text>Answer Choices:</Text>
+                            <Panel style = {{fontFamily: 'nunito'}} key = {bundle.question} title={bundle.question}>
+                                <Text style = {{fontFamily: 'nunito-bold'}}>Answer Choices:</Text>
                                 {bundle.answers.map(answer =>
-                                    <Text>{answer}</Text>
+                                    <Text style = {{fontFamily: 'nunito'}} key = {answer}>{answer}</Text>
                                 ) }
-                                <Button><Text>Edit Question</Text></Button>
-                                <Button><Text>Delete Question</Text></Button>
+                                <View style = {{flexDirection: 'row'}}>
+                                    <Button style = {{backgroundColor: "purple"}}><Text style = {{fontFamily: 'nunito'}}>Edit</Text></Button>
+                                    <Button style = {{backgroundColor: "white", borderWidth: 1, borderColor: "purple"}}><Text style = {{fontFamily: 'nunito', color: "purple"}}>Delete</Text></Button>
+                                </View>
+                                <View
+                                key ={bundle}
+                                style={{
+                                paddingTop: 8,
+                                  borderBottomColor: 'purple',
+                                  borderBottomWidth: 1,
+                                }}
+                              />
                             </Panel>) }
                             
                         </ScrollView>

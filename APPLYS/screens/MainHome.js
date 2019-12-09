@@ -42,8 +42,8 @@ export default class MainHome extends React.Component{
         };
       };
 
-    async getIt() {
-        if(this.state.fname == ''){
+    async componentDidMount() {
+        
         try {
             // const fname = await AsyncStorage.getItem('fname');
             // const lname = await AsyncStorage.getItem('lname');
@@ -53,13 +53,14 @@ export default class MainHome extends React.Component{
             // const score = await AsyncStorage.getItem('score');
             const userinfo = await AsyncStorage.getItem('userinfo')
             const ui = JSON.parse(userinfo)
-            console.log(ui)
             const incorrect = await AsyncStorage.getItem('incorrect');
-            this.setState({fname: ui.fname, lname: ui.lname, email:ui.email, physemail: ui.physemail, score: ui.surveyScore, incorrect: JSON.parse(incorrect)})
+            const score = await AsyncStorage.getItem('score');
+            console.log("sc " + score)
+            await this.setState({fname: ui.fname, lname: ui.lname, email:ui.email, physemail: ui.physemail, score: score, incorrect: JSON.parse(incorrect)})
           } catch (error) {
               console.log(error.message);
           }
-        }
+        
     }
 
     _signOutAsync = async () => {
@@ -117,7 +118,7 @@ export default class MainHome extends React.Component{
                 </View>
             );
         }
-        else if(item == "Info"){
+        else if(item == "Infographics"){
             return (
                 <View style={styles.cpage}>
                     <Text style={styles.title}>{item}</Text>
@@ -144,7 +145,7 @@ export default class MainHome extends React.Component{
 
    
     render(){
-        this.getIt()
+        //this.getIt()
         return(
             <View style = {styles.maindiv}>
                 <View style ={styles.infodiv} >
@@ -158,7 +159,7 @@ export default class MainHome extends React.Component{
                 loop = {true}
                 layout={'default'}
                 ref={(c) => { this._carousel = c; }}
-                data={["Survey", "Info"]}
+                data={["Survey", "Infographics"]}
                 renderItem={this._renderItem}
                 sliderWidth={Dimensions.get('window').width}
                 itemWidth={300}
