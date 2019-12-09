@@ -32,6 +32,7 @@ export default class MainHome extends React.Component{
             score: '',
             incorrect:[]
         };
+        //this.componentDidMount = this.componentDidMount.bind(this)
     }
 
     static navigationOptions =({ navigation })=> {
@@ -41,18 +42,24 @@ export default class MainHome extends React.Component{
         };
       };
 
-    async componentDidMount() {
+    async getIt() {
+        if(this.state.fname == ''){
         try {
-            const fname = await AsyncStorage.getItem('fname');
-            const lname = await AsyncStorage.getItem('lname');
-            const email = await AsyncStorage.getItem('email');
-            const physemail = await AsyncStorage.getItem('physemail');
-            const score = await AsyncStorage.getItem('score');
+            // const fname = await AsyncStorage.getItem('fname');
+            // const lname = await AsyncStorage.getItem('lname');
+            // const email = await AsyncStorage.getItem('email');
+            // const physemail = await AsyncStorage.getItem('physemail');
+            // console.log("f "+ physemail)
+            // const score = await AsyncStorage.getItem('score');
+            const userinfo = await AsyncStorage.getItem('userinfo')
+            const ui = JSON.parse(userinfo)
+            console.log(ui)
             const incorrect = await AsyncStorage.getItem('incorrect');
-            this.setState({fname: fname, lname: lname, email:email, physemail: physemail, score: score, incorrect: JSON.parse(incorrect)})
+            this.setState({fname: ui.fname, lname: ui.lname, email:ui.email, physemail: ui.physemail, score: ui.surveyScore, incorrect: JSON.parse(incorrect)})
           } catch (error) {
               console.log(error.message);
           }
+        }
     }
 
     _signOutAsync = async () => {
@@ -67,7 +74,6 @@ export default class MainHome extends React.Component{
     }
 
     surveyRender = () =>{
-        console.log()
         axios.get(config.serversite + '/users/getInfo',{
             params: {
                 email: this.state.email
@@ -138,6 +144,7 @@ export default class MainHome extends React.Component{
 
    
     render(){
+        this.getIt()
         return(
             <View style = {styles.maindiv}>
                 <View style ={styles.infodiv} >
