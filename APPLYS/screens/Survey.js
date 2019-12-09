@@ -156,3 +156,22 @@ export default class Survey extends React.Component{
 // .then(res => {console.log(res.data)
 // }
 // )
+
+
+// Route to delete questions for testing:
+// axios.get(config.serversite + '/questions/removequestion', {
+//   params: {
+//     id: 1
+//   }
+// })
+// .then(res => {console.log(res)
+// }
+// )
+
+
+
+// Route to find number of items
+// axios.get(config.serversite + '/questions/getsize')
+//     .then(res => {console.log(res.data.count)
+//     }
+//     )
