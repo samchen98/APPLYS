@@ -1,6 +1,7 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import {Button} from 'native-base'
+import {AsyncStorage} from 'react-native';
 import {
     Text,
     View,
@@ -15,7 +16,8 @@ class SurveyDone extends React.Component{
     constructor(props) {
         super(props);
     }
-    componentDidMount() {
+    async componentDidMount() {
+        console.log("mounted")
         const obj = {
             email: this.props.email,
             incorrect: this.props.incorrect,
@@ -25,6 +27,9 @@ class SurveyDone extends React.Component{
         .then(res => {
             console.log(res.data)
         });
+        console.log(obj.score)
+        await AsyncStorage.setItem('score', obj.score);
+        await AsyncStorage.setItem('incorrect', JSON.stringify(this.props.incorrectFeed));
     }
     render(){
         

@@ -151,6 +151,20 @@ router.route('/getAllPatients').get((req, res) => {
   });
 });
 
+router.route('/getInfo').get((req, res) => {
+  const { body } = req;
+  console.log("hello")
+  console.log(req)
+    User.find({
+      email: req.query.email,
+    }, (err, users) => {
+      return res.send({
+          message: users
+        });
+    
+  });
+});
+
 router.route('/updateScore').post((req, res) => {
   const { body } = req;
   // let {
@@ -159,9 +173,14 @@ router.route('/updateScore').post((req, res) => {
   //   score
   // } = body;
   console.log(req.body.email)
-  User.updateOne({email: req.body.email}, 
-    {$set: { incorrectAns : req.body.incorrect, "surveyScore" : req.body.score}});
-});
+  User.findOneAndUpdate({email: req.body.email}, 
+    { incorrectAns : req.body.incorrect, "surveyScore" : req.body.score}, {new: true}, (err, doc) => {
+      if (err) {
+          console.log("Something wrong when updating data!");
+      }
+      console.log(doc);
+    });
+})
 
 
 module.exports = router;

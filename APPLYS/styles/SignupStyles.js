@@ -6,6 +6,27 @@ import {
 import { Left } from 'native-base';
 
 export default StyleSheet.create({
+  logo: {
+    marginTop: 100
+  },
+  form:{
+    width: 320,
+    marginBottom: 30,
+    fontFamily: 'nunito',
+    fontSize: 40
+  },
+  loginButton: {
+    marginBottom: 30,
+    width:150,
+    height: 60,
+    justifyContent: "center",
+      textAlignVertical: "center"
+  },
+  submitButtonText: {
+    fontSize: 18,
+    fontFamily: 'nunito'
+  },
+  
     inputIOS: {
         fontSize: 16,
         width: 250,
@@ -23,12 +44,6 @@ export default StyleSheet.create({
         borderRadius: 8,
         color: 'black',
         paddingRight: 30, // to ensure the text is never behind the icon
-      },
-      dobPicker: {
-          width: 250, 
-          paddingVertical: 4,
-          paddingHorizontal: 10,
-          borderColor: "white",
       },
       formContainer: {
           marginBottom: 20,

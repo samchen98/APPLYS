@@ -22,7 +22,6 @@ const AppStack = createStackNavigator({
   Survey: {screen: Survey},
   Passport: {screen: Passport},
   Infographics: {screen: Infographics},
-  Role: {screen: SignupRole},
   SurveyDone: {screen: SurveyDone}
 })
 const AuthStack = createStackNavigator({
