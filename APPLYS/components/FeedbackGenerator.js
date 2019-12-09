@@ -11,7 +11,7 @@ import {
   } from 'react-native';
 import {Button} from 'native-base'
 import Survey from '../screens/Survey'
-
+import styles from '../styles/SurveyStyles.js'
 export default class FeedbackGenerator extends React.Component{
     constructor(props) {
         super(props);
@@ -29,19 +29,19 @@ export default class FeedbackGenerator extends React.Component{
     render(){
         if(this.state.correct){
             return(
-                <View>
-                    <Text> Correct! </Text>
-                    <Text> {this.props.feedback} </Text>
-                    <Button onPress = {this.props.updateQuestion}><Text>Continue</Text></Button>
+                <View style={styles.maindiv}>
+                    <Text style={styles.cortext}> Correct! </Text>
+                    <Text style={styles.feedbacktext}> {this.props.feedback} </Text>
+                    <Button style={styles.nextbtn} onPress = {this.props.updateQuestion}><Text style={styles.nextbtnfont} >Continue</Text></Button>
                 </View>
             )
         }
         else{
             return(
-                <View>
-                    <Text> Incorrect! </Text>
-                    <Text> {this.props.feedback} </Text>
-                    <Button onPress = {this.props.updateQuestion}><Text>Continue</Text></Button>
+                <View style={styles.maindiv}>
+                    <Text style={styles.incortext}> Incorrect! </Text>
+                    <Text style={styles.feedbacktext}> {this.props.feedback} </Text>
+                    <Button  style={styles.nextbtn} onPress = {this.props.updateQuestion}><Text style={styles.nextbtnfont}>Continue</Text></Button>
                 </View>
             )
         }
