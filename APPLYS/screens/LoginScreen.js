@@ -43,14 +43,17 @@ export default class LoginScreen extends Component {
   };
 
   async storePatient(data) {
+    await AsyncStorage.setItem('userToken', "1");
     await AsyncStorage.setItem('fname', data.fname);
     await AsyncStorage.setItem('lname', data.lname);
     await AsyncStorage.setItem('email', data.email);
+    await AsyncStorage.setItem('score', data.score);
     await AsyncStorage.setItem('physemail', data.physemail);
     return
   }
 
   async storePhysician(data) {
+    await AsyncStorage.setItem('userToken', "1");
     await AsyncStorage.setItem('fname', data.fname);
     await AsyncStorage.setItem('lname', data.lname);
     await AsyncStorage.setItem('email', data.email);
@@ -62,7 +65,6 @@ export default class LoginScreen extends Component {
       email: email,
       password: pass
     };
-    const temp = config.serversite;
 
     axios.post(config.serversite + '/users/auth', newUser)
     .then(res=> {if(res.data.success = true){

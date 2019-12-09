@@ -151,6 +151,20 @@ router.route('/getAllPatients').get((req, res) => {
   });
 });
 
+router.route('/getInfo').get((req, res) => {
+  const { body } = req;
+  console.log("hello")
+  console.log(req)
+    User.find({
+      email: req.query.email,
+    }, (err, users) => {
+      return res.send({
+          message: users
+        });
+    
+  });
+});
+
 router.route('/updateScore').post((req, res) => {
   const { body } = req;
   // let {

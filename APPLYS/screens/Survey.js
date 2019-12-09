@@ -33,6 +33,7 @@ export default class Survey extends React.Component{
           numAns: 0,
           incorrect: [],
           email: this.props.navigation.getParam('email', 'default value'),
+          incorrectFeed: []
         };
         this.getQuestions = this.getQuestions.bind(this)
         this.componentDidMount = this.componentDidMount.bind(this)
@@ -93,7 +94,7 @@ export default class Survey extends React.Component{
         this.setState({correct: true, numAns : this.state.numAns + 1, numCor: this.state.numCor + 1, isQuestion: !this.state.isQuestion})
       }
       else{
-        this.setState({correct: false, numAns : this.state.numAns + 1, isQuestion: !this.state.isQuestion, incorrect: [...this.state.incorrect, this.state.questiongroup.question]})
+        this.setState({correct: false, numAns : this.state.numAns + 1, isQuestion: !this.state.isQuestion, incorrect: [...this.state.incorrect, this.state.questiongroup.question], incorrectFeed: [...this.state.incorrectFeed, this.state.questiongroup.feedback]})
       }
     }
 
@@ -122,7 +123,7 @@ export default class Survey extends React.Component{
       }
       else{
         return(
-          <SurveyDone email = {this.state.email} incorrect = {this.state.incorrect} cor = {this.state.numCor} tot = {this.state.numAns}/>
+          <SurveyDone email = {this.state.email} incorrect = {this.state.incorrect}  incorrectFeed = {this.state.incorrectFeed} cor = {this.state.numCor} tot = {this.state.numAns}/>
           )
       }
     }

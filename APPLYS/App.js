@@ -42,6 +42,7 @@ async function loadResourcesAsync() {
       'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
       'indie-flower': require('./assets/fonts/IndieFlower-Regular.ttf'),
       'nunito': require('./assets/fonts/Nunito-Regular.ttf'),
+      'nunito-bold': require('./assets/fonts/Nunito-Bold.ttf'),
     }),
   ]);
 }
