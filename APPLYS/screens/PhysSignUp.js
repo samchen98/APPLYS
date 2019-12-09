@@ -14,10 +14,11 @@ import {
 import axios from 'axios';
 import { Button, Icon, Title, Text } from 'native-base';
 import MainHome from './MainHome';
-import styles from './Styles.js'
+import styles from '../styles.SignupStyles.js'
 const config = require("../config")
 import { MonoText } from '../components/StyledText';
 import { tsConstructorType } from '@babel/types';
+import Logo from '../assets/images/Logo.js';
 
 export default class PhysSignUp extends Component {
   constructor(props) {
@@ -88,14 +89,9 @@ export default class PhysSignUp extends Component {
             contentContainerStyle={styles.contentContainer}>
             <View style={styles.welcomeContainer}>
 
-              <Image
-                source={
-                  __DEV__
-                    ? require('../assets/images/robot-dev.png')
-                    : require('../assets/images/robot-prod.png')
-                }
-                style={styles.welcomeImage}
-              />
+            <View style={styles.logo1}>
+            <Logo/>
+          </View>
               </View>
               <TextInput style = {styles.input}
                     underlineColorAndroid = "transparent"
