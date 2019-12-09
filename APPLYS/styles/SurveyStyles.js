@@ -35,9 +35,9 @@ height: '40%',
 },
 submitbtn:{
   margin: 5,
-  backgroundColor:'purple',
+  backgroundColor:'#7303fc',
 
-  borderColor:'purple',
+  borderColor:'#7303fc',
   borderWidth:2,
 },
 submittext:{
@@ -79,7 +79,7 @@ nextbtn: {
   margin: 30,
   height: 90,
   width: 300,
-  backgroundColor: "purple",
+  backgroundColor: "#7303fc",
   textAlign: "center",
   justifyContent: 'center', 
   alignItems: 'center',
@@ -89,7 +89,7 @@ nextbtn: {
   elevation: 3,
   shadowRadius: 15,
   shadowOffset : { width: 1, height: 13},
-  color:"purple",
+  color:"#7303fc",
 },
 nextbtnfont:{
   fontFamily: 'nunito',
@@ -102,7 +102,7 @@ nextbtnfont:{
         margin: 30,
         height: 90,
         width: 300,
-        backgroundColor: "purple",
+        backgroundColor: "#7303fc",
         textAlign: "center",
         justifyContent: 'center', 
         alignItems: 'center',
@@ -112,7 +112,7 @@ nextbtnfont:{
         elevation: 3,
         shadowRadius: 15,
         shadowOffset : { width: 1, height: 13},
-        color:"purple",
+        color:"#7303fc",
       },
       homebtnfont:{
         fontFamily: 'nunito',
