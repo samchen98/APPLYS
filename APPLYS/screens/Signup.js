@@ -43,7 +43,7 @@ export default class SignUpScreen extends Component {
   }
   _createaccount = async () => {
     await AsyncStorage.clear();
-    this.props.navigation.navigate('Login');
+    this.props.navigation.navigate('Auth');
   };
 
   signup = (fname, lname, email, pass, physemail) => {
@@ -75,7 +75,7 @@ export default class SignUpScreen extends Component {
       axios.post(config.serversite + '/users/add', newUser)
       .then(res => {
         console.log(res.data)
-        this.props.navigation.navigate('Login');
+        this.props.navigation.navigate('Auth');
       });
       }
     }

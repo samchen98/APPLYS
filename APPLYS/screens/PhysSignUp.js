@@ -73,7 +73,7 @@ export default class PhysSignUp extends Component {
       axios.post(config.serversite + '/users/add', newUser)
       .then(res => {
         console.log(res.data)
-        this.props.navigation.navigate('Login');
+        this.props.navigation.navigate('Auth');
       });
       }
     }

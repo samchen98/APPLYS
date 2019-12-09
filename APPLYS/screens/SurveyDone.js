@@ -7,13 +7,23 @@ import {
   } from 'react-native';
 import { withNavigation } from 'react-navigation'
 import Survey from './Survey';
+import axios from 'axios';
+const config = require("../config")
 
 class SurveyDone extends React.Component{
     constructor(props) {
         super(props);
     }
     componentDidMount() {
-        //post survey results
+        const obj = {
+            email: this.props.email,
+            incorrect: this.props.incorrect,
+            score: this.props.cor.toString() + "/" + this.props.tot.toString()
+        }
+        axios.post(config.serversite + '/users/updateScore',obj)
+        .then(res => {
+            console.log(res.data)
+        });
     }
     render(){
         

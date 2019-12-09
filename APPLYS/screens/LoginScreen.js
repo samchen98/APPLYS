@@ -42,7 +42,22 @@ export default class LoginScreen extends Component {
     this.props.navigation.navigate('Role');
   };
 
-  login = (email, pass) => {
+  async storePatient(data) {
+    await AsyncStorage.setItem('fname', data.fname);
+    await AsyncStorage.setItem('lname', data.lname);
+    await AsyncStorage.setItem('email', data.email);
+    await AsyncStorage.setItem('physemail', data.physemail);
+    return
+  }
+
+  async storePhysician(data) {
+    await AsyncStorage.setItem('fname', data.fname);
+    await AsyncStorage.setItem('lname', data.lname);
+    await AsyncStorage.setItem('email', data.email);
+    return
+  }
+
+  login = async(email, pass) => {
     const newUser = {
       email: email,
       password: pass
@@ -50,13 +65,14 @@ export default class LoginScreen extends Component {
     const temp = config.serversite;
 
     axios.post(config.serversite + '/users/auth', newUser)
-    .then(res => {if(res.data.success = true){
+    .then(res=> {if(res.data.success = true){
       if(res.data.message.userType == "patient"){
-        this.props.navigation.navigate('Home', {info: res.data.message});
+        this.storePatient(res.data.message)
+        this.props.navigation.navigate('App');
       }
       else if(res.data.message.userType == "physician"){
-        console.log(res.data.message)
-        this.props.navigation.navigate('PhysHome', {info: res.data.message});
+        this.storePhysician(res.data.message)
+        this.props.navigation.navigate('Phys');
       }
     }
     else{

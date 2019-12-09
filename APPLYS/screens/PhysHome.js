@@ -16,12 +16,25 @@ export default class PhysHome extends React.Component{
     constructor(props) {
         super(props);
         this.state ={
-            info: this.props.navigation.getParam('info', 'default value'),
+            fname: '',
+            lname: '',
+            email: ''
         }
     }
     static navigationOptions = {
         title: 'Home',
     };
+
+    async componentDidMount() {
+        try {
+            const fname = await AsyncStorage.getItem('fname');
+            const lname = await AsyncStorage.getItem('lname');
+            const email = await AsyncStorage.getItem('email');
+            this.setState({fname: fname, lname: lname, email:email})
+          } catch (error) {
+              console.log(error.message);
+          }
+    }
     
     render(){
         console.log(this.state.info)
@@ -32,9 +45,9 @@ export default class PhysHome extends React.Component{
                 contentContainerStyle={styles.contentContainer}>
                     <View style = {styles.container}>
                         <Text>PHYSICIAN SCREEN</Text>
-                        <Text>Welcome, {this.state.info.fname} {this.state.info.lname}</Text>
+                        <Text>Welcome, {this.state.fname} {this.state.lname}</Text>
                         <Button onPress = {() => this.props.navigation.navigate('ManageSurv')}><Text>Manage Survey Questions</Text></Button>
-                        <Button onPress = {() => this.props.navigation.navigate('Patients', {email: this.state.info.email})}><Text>Manage Patients</Text></Button>
+                        <Button onPress = {() => this.props.navigation.navigate('Patients', {email: this.state.email})}><Text>Manage Patients</Text></Button>
                     </View>
                     
                 </ScrollView>

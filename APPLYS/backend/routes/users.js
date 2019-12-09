@@ -121,6 +121,8 @@ router.route('/add').post((req, res) => {
     newUser.email = email;
     newUser.physemail = physemail;
     newUser.password = newUser.generateHash(password);
+    newUser.incorrectAns = [],
+    newUser.surveyScore = null
     newUser.save((err, user) => {
       if (err) {
         return res.send({
@@ -147,6 +149,18 @@ router.route('/getAllPatients').get((req, res) => {
         });
     
   });
+});
+
+router.route('/updateScore').post((req, res) => {
+  const { body } = req;
+  // let {
+  //   email,
+  //   incorrect,
+  //   score
+  // } = body;
+  console.log(req.body.email)
+  User.updateOne({email: req.body.email}, 
+    {$set: { incorrectAns : req.body.incorrect, "surveyScore" : req.body.score}});
 });
 
 
