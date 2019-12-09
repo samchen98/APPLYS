@@ -61,7 +61,7 @@ export default class ManagePatients extends React.Component{
                                 key ={bundle}
                                 style={{
                                 paddingTop: 8,
-                                  borderBottomColor: 'purple',
+                                  borderBottomColor: '#7303fc',
                                   borderBottomWidth: 1,
                                 }}
                               />

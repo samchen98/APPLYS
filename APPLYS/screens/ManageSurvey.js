@@ -48,7 +48,7 @@ export default class ManagePatients extends React.Component{
                 style={styles.container}
                 >
                     <View style = {styles.container}>
-                        <Button style = {{marginBottom: 10, backgroundColor: "purple", justifyContent: 'center'}} onPress = {() => this.addQuestion()}><Text>Add New Question</Text></Button>
+                        <Button style = {{marginBottom: 10, backgroundColor: "#7303fc", justifyContent: 'center'}} onPress = {() => this.addQuestion()}><Text>Add New Question</Text></Button>
                         <ScrollView style={styles.container}>
                             {this.state.qarr.map(bundle =>
                             <Panel style = {{fontFamily: 'nunito'}} key = {bundle.question} title={bundle.question}>
@@ -57,14 +57,14 @@ export default class ManagePatients extends React.Component{
                                     <Text style = {{fontFamily: 'nunito'}} key = {answer}>{answer}</Text>
                                 ) }
                                 <View style = {{flexDirection: 'row'}}>
-                                    <Button style = {{backgroundColor: "purple"}}><Text style = {{fontFamily: 'nunito'}}>Edit</Text></Button>
-                                    <Button style = {{backgroundColor: "white", borderWidth: 1, borderColor: "purple"}}><Text style = {{fontFamily: 'nunito', color: "purple"}}>Delete</Text></Button>
+                                    <Button style = {{backgroundColor: "#7303fc"}}><Text style = {{fontFamily: 'nunito'}}>Edit</Text></Button>
+                                    <Button style = {{backgroundColor: "white", borderWidth: 1, borderColor: "#7303fc"}}><Text style = {{fontFamily: 'nunito', color: "#7303fc"}}>Delete</Text></Button>
                                 </View>
                                 <View
                                 key ={bundle}
                                 style={{
                                 paddingTop: 8,
-                                  borderBottomColor: 'purple',
+                                  borderBottomColor: '#7303fc',
                                   borderBottomWidth: 1,
                                 }}
                               />

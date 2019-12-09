@@ -44,7 +44,7 @@ export default StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 8,
         borderWidth: 0.5,
-        borderColor: 'purple',
+        borderColor: '#7303fc',
         borderRadius: 8,
         color: 'black',
         paddingRight: 30, // to ensure the text is never behind the icon
@@ -60,7 +60,7 @@ export default StyleSheet.create({
         margin: 10,
         height: 90,
         width: 300,
-        backgroundColor: "purple",
+        backgroundColor: "#7303fc",
         textAlign: "center",
         justifyContent: 'center', 
         alignItems: 'center',
@@ -81,19 +81,19 @@ export default StyleSheet.create({
         margin: 20,
         fontSize: 40,
         textAlign: "center",
-        color: "purple"
+        color: "#7303fc"
       },
 
       //signup.js
       input: {
         margin: 15,
         height: 40,
-        borderColor: 'purple',
+        borderColor: '#7303fc',
         borderWidth: 1,
         textAlign: 'center',
       },
       submitButton: {
-        backgroundColor: 'purple',
+        backgroundColor: '#7303fc',
         padding: 10,
         margin: 15,
         height: 40,

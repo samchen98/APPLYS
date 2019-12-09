@@ -39,7 +39,7 @@ export default class LoginScreen extends Component {
   }
   _createaccount = async () => {
     //await AsyncStorage.clear();
-    this.props.navigation.navigate('Role');
+    this.props.navigation.navigate('Sign');
   };
 
   async storePatient(data) {
@@ -115,7 +115,7 @@ export default class LoginScreen extends Component {
             </Item>
           </Form>
           <Button
-          style = {[styles.loginButton, {backgroundColor: "purple"}]}
+          style = {[styles.loginButton, {backgroundColor: "#7303fc"}]}
           onPress = {
             () => this.login(this.state.email, this.state.password)
           }>
@@ -123,11 +123,11 @@ export default class LoginScreen extends Component {
           </Button>
 
           <Button
-              style = {[styles.loginButton, {backgroundColor: "white", borderColor:"purple", borderWidth: 2}]}
+              style = {[styles.loginButton, {backgroundColor: "white", borderColor:"#7303fc", borderWidth: 2}]}
               onPress = {
               this._createaccount
               }>
-              <Text style = {[styles.submitButtonText, {color: "purple"}]}> Sign Up </Text>
+              <Text style = {[styles.submitButtonText, {color: "#7303fc"}]}> Sign Up </Text>
           </Button>
         </View>
       );       

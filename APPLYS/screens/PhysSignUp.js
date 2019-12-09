@@ -14,13 +14,14 @@ import {
 import axios from 'axios';
 import { Button, Icon, Title, Text } from 'native-base';
 import MainHome from './MainHome';
-import styles from '../styles.SignupStyles.js'
+import styles from '../styles/SignupStyles.js'
 const config = require("../config")
 import { MonoText } from '../components/StyledText';
 import { tsConstructorType } from '@babel/types';
 import Logo from '../assets/images/Logo.js';
 
 export default class PhysSignUp extends Component {
+  
   constructor(props) {
     super(props);
     this.state = { 

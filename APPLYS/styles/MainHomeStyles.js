@@ -32,7 +32,7 @@ export default StyleSheet.create({
     marginBottom: 10,
   },
   surveyinfo: {
-    height: 270,
+    height: 240,
     width: 230,
   },
   surveyinfoText:{
@@ -43,7 +43,7 @@ export default StyleSheet.create({
     margin: 30,
     height: 90,
     width: 230,
-    backgroundColor: 'purple',
+    backgroundColor: '#7303fc',
     textAlign: "center",
     justifyContent: 'center', 
     alignItems: 'center',
@@ -87,7 +87,7 @@ export default StyleSheet.create({
     fontFamily:'nunito'
   },
   signout: {
-    backgroundColor: 'purple',
+    backgroundColor: '#7303fc',
     width: 95,
     margin: 15,
     position: 'absolute',
@@ -102,7 +102,7 @@ export default StyleSheet.create({
   },
      
     maindiv:{
-      backgroundColor: "purple",
+      backgroundColor: "#7303fc",
       flex: 1, 
       justifyContent: "center",
       alignItems: "center",
@@ -131,7 +131,7 @@ export default StyleSheet.create({
         marginBottom: 20
       },
       buttondiv:{
-        backgroundColor: 'purple', 
+        backgroundColor: '#7303fc', 
         flex: 1, 
         justifyContent: "center",
         alignItems: "center",

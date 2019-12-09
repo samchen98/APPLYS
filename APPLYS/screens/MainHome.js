@@ -43,7 +43,7 @@ export default class MainHome extends React.Component{
       };
 
     async componentDidMount() {
-        
+        console.log("pppp")
         try {
             // const fname = await AsyncStorage.getItem('fname');
             // const lname = await AsyncStorage.getItem('lname');
@@ -56,7 +56,9 @@ export default class MainHome extends React.Component{
             const incorrect = await AsyncStorage.getItem('incorrect');
             const score = await AsyncStorage.getItem('score');
             console.log("sc " + score)
+           
             await this.setState({fname: ui.fname, lname: ui.lname, email:ui.email, physemail: ui.physemail, score: score, incorrect: JSON.parse(incorrect)})
+            
           } catch (error) {
               console.log(error.message);
           }
