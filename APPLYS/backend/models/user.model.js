@@ -12,6 +12,8 @@ const userSchema = new Schema({
     password: {type: String},
     userType:{type:String},
     physemail: {type:String},
+    incorrectAns: {type: Array},
+    surveyScore: {type: String}
 }, {
   timestamps: true,
 });

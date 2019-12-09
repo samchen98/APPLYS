@@ -10,41 +10,34 @@ import {
 } from 'react-native';
 import styles from './Styles.js'
 import { Button, Icon, Title, Text } from 'native-base';
+import Panel from './Panel'
+import axios from 'axios';
 const config = require("../config")
+var qarr = []
 
 export default class ManagePatients extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            id: 0
+            qarr: [],
         }
     }
     static navigationOptions = {
         title: 'Manage Survey',
     };
 
-    componentDidMount() {
-        axios.get(config.serversite + '/questions/getquestion', {
-            params: {
-              id: this.state.id
-            }
-          })
+    componentDidMount(){
+        axios.get(config.serversite + '/questions/getAllQuestions')
           .then((response) =>{
-            console.log(response.data.message);
-            if(response.data.message == undefined) {
-              this.setState({isEnd: true})
-            }
-            else{
-              this.setState({questiongroup: response.data.message, answerarr: response.data.message.answers, id : this.state.id + 1})
-            } 
+            this.setState({qarr: response.data.questions})
           })
           .catch(function (error) {
-            // handle error
             console.log(error);
           })
     }
-    
+
     render(){
+        console.log(this.state.qarr)
         return(
             <View style = {styles.container}>
                 <ScrollView
@@ -53,7 +46,18 @@ export default class ManagePatients extends React.Component{
                     <View style = {styles.container}>
                         <Text>MANAGE Survey SCREEN</Text>
                         <Button><Text>Add a survey question</Text></Button>
-                        
+                        <ScrollView style={styles.container}>
+                            {this.state.qarr.map(bundle =>
+                            <Panel title={bundle.question}>
+                                <Text>Answer Choices:</Text>
+                                {bundle.answers.map(answer =>
+                                    <Text>{answer}</Text>
+                                ) }
+                                <Button><Text>Edit Question</Text></Button>
+                                <Button><Text>Delete Question</Text></Button>
+                            </Panel>) }
+                            
+                        </ScrollView>
                     </View>
                     
                 </ScrollView>

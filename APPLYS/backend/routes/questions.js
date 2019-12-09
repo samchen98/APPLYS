@@ -46,7 +46,14 @@ router.route('/getquestion').get((req, res) => {
         });
     
   });
+});
 
+router.route('/getAllQuestions').get((req, res) => {
+  Question.find({}, (err, questions) => {
+    return res.send({
+        questions
+      });
+  });
 });
 
 // router.route('/getSize').get((req, res) => {

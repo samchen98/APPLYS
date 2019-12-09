@@ -52,10 +52,11 @@ export default class LoginScreen extends Component {
     axios.post(config.serversite + '/users/auth', newUser)
     .then(res => {if(res.data.success = true){
       if(res.data.message.userType == "patient"){
-        this.props.navigation.navigate('App');
+        this.props.navigation.navigate('Home', {info: res.data.message});
       }
       else if(res.data.message.userType == "physician"){
-        this.props.navigation.navigate('Phys');
+        console.log(res.data.message)
+        this.props.navigation.navigate('PhysHome', {info: res.data.message});
       }
     }
     else{

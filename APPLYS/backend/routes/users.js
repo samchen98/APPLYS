@@ -68,7 +68,6 @@ router.route('/auth').post((req, res) => {
 });
 });
 
-
 router.route('/add').post((req, res) => {
   const { body } = req;
   let {
@@ -136,10 +135,19 @@ router.route('/add').post((req, res) => {
     });
   });
 
-
 });
 
-
+router.route('/getAllPatients').get((req, res) => {
+  const { body } = req;
+    User.find({
+      physemail: req.query.physemail,
+    }, (err, users) => {
+      return res.send({
+          message: users
+        });
+    
+  });
+});
 
 
 module.exports = router;

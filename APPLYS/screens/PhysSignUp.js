@@ -19,7 +19,7 @@ const config = require("../config")
 import { MonoText } from '../components/StyledText';
 import { tsConstructorType } from '@babel/types';
 
-export default class SignUpScreen extends Component {
+export default class PhysSignUp extends Component {
   constructor(props) {
     super(props);
     this.state = { 
@@ -27,9 +27,8 @@ export default class SignUpScreen extends Component {
       lname: '',
       email: '' ,
       password:'',
-      userType: 'patient',
+      userType: 'physician',
       textstuff:'',
-      physemail: '',
     };
   }
   static navigationOptions = {
@@ -43,17 +42,16 @@ export default class SignUpScreen extends Component {
   }
   _createaccount = async () => {
     await AsyncStorage.clear();
-    this.props.navigation.navigate('Login');
+    this.props.navigation.navigate('Auth');
   };
 
-  signup = (fname, lname, email, pass, physemail) => {
+  signup = (fname, lname, email, pass) => {
     const newUser = {
       fname: fname,
       lname: lname,
       email: email,
       password: pass,
       userType: this.state.userType,
-      physemail: physemail
     };
     const temp = config.serversite;
 
@@ -82,6 +80,7 @@ export default class SignUpScreen extends Component {
   }
 
   render(){
+    console.log("type " + this.state.userType )
       return (
         <View style = {styles.container}>
           <ScrollView
@@ -131,18 +130,10 @@ export default class SignUpScreen extends Component {
                 autoCapitalize = "none"
                 onChangeText = {password => this.setState({ password })}
                 value= {this.state.password}/>
-              
-              <TextInput style = {styles.input}
-                    underlineColorAndroid = "transparent"
-                    placeholder = " Physician's Email"
-                    placeholderTextColor = "#000000"
-                    autoCapitalize = "none"
-                    onChangeText={physemail => this.setState({ physemail })}
-                    value= {this.state.physemail} />
 
               <Button
                 style = {styles.submitButton}
-                onPress = {() => this.signup(this.state.fname, this.state.lname, this.state.email, this.state.password, this.state.physemail)}>
+                onPress = {() => this.signup(this.state.fname, this.state.lname, this.state.email, this.state.password)}>
                   <Text style = {styles.submitButtonText}> Create Account </Text>
               </Button>
 
