@@ -18,7 +18,6 @@ import PhysSignUp from '../screens/PhysSignUp'
 
 //add screens here
 const AppStack = createStackNavigator({
-  Signup: {screen: Signup},
   Home: {screen: MainHome},
   Survey: {screen: Survey},
   Passport: {screen: Passport},
@@ -39,19 +38,12 @@ const PhysStack = createStackNavigator({
 export default createAppContainer(
   createSwitchNavigator({
     AuthLoading: AuthLoadingScreen,
-    //Auth: AuthStack,
-    Login: LoginScreen,
-    // App: AppStack,
-    // Phys: PhysStack,
+    Auth: AuthStack,
+    App: AppStack,
+    Phys: PhysStack,
     Role: SignupRole,
     Sign: Signup,
     PhysSignUp: PhysSignUp,
-    PhysHome : PhysHome,
-    Patients: ManagePatients,
-    ManageSurv: ManageSurvey,
-    Home: MainHome,
-    Survey: Survey,
-    SurveyDone: SurveyDone,
     
   },
   {

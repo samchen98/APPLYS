@@ -28,7 +28,7 @@ export default class SignupRole extends Component {
             <Title>Header</Title>
           </Body>
           <Right>
-            <Button hasText transparent onPress = {() => this.props.navigation.navigate("Login")}>
+            <Button hasText transparent onPress = {() => this.props.navigation.navigate("Auth")}>
               <Text>Cancel</Text>
             </Button>
           </Right>
