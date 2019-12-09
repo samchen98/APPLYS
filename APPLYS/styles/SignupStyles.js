@@ -9,6 +9,10 @@ export default StyleSheet.create({
   logo: {
     marginTop: 100
   },
+  logo1: {
+    marginTop: 1,
+    alignItems:'center'
+  },
   form:{
     width: 320,
     marginBottom: 30,
@@ -52,11 +56,11 @@ export default StyleSheet.create({
           marginBottom: 10
       },
       roleBtn: {
-        padding: 10,
-        margin: 15,
+        padding: 5,
+        margin: 10,
         height: 90,
         width: 300,
-        backgroundColor: "white",
+        backgroundColor: "purple",
         textAlign: "center",
         justifyContent: 'center', 
         alignItems: 'center',
@@ -70,13 +74,34 @@ export default StyleSheet.create({
       roletxt:{
         textAlign: "center",
         fontSize: 30,
-        color: "#92e66c",
+        color: "white",
         
       },
       iamtext:{
         margin: 20,
         fontSize: 40,
         textAlign: "center",
-        color: "white"
+        color: "purple"
       },
+
+      //signup.js
+      input: {
+        margin: 15,
+        height: 40,
+        borderColor: 'purple',
+        borderWidth: 1,
+        textAlign: 'center',
+      },
+      submitButton: {
+        backgroundColor: 'purple',
+        padding: 10,
+        margin: 15,
+        height: 40,
+        textAlign: 'center',
+      },
+      submitButtonText:{
+        color: 'white',
+        textAlign: 'center',
+      },
+      
 })
