@@ -72,7 +72,7 @@ our website: http://applys.web.unc.edu/
 -Eric Shyu  
 
 7.License:
-plan on using an open source liscense.
+plan on using an open source licenses.
 
 8.Acknowledgements:  
 -Maria Ferris  
