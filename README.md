@@ -22,6 +22,7 @@ Prerequisites:   The user needs to install Node.js, and react native. Instructio
 You can run the app with expo  
 use the command: npm install -g expo-cli  
 Installing:   
+From home directory use the command: npm install
 If you want to develop on an android install android studios and install an emulator to run the app. https://developer.android.com/studio  
 If you want to develop on ios you need which comes installed on mac xcode.  
 You can also use expo to demo the app.  
@@ -29,7 +30,16 @@ Running locally:
 command:  
 expo start  
 npm run android
-   
+
+In order to view Database, navigate to: https://cloud.mongodb.com/user?signedOut=true#/atlas/login
+Username is: Sam.g.chen1@gmail.com
+Password is: 730097292
+Then click "collections" within "Cluster0"
+
+Inorder to see backend code, navigate to the "backend" file or clone from heroku repo: "https://git.heroku.com/infinite-mountain-45827.git" 
+
+In order to run application locally, navigate to the config.js file and change serversite. Then navigate into the backend folder and enter the command "nodemon server"
+
 Warranty:  
 These instructions were tested and successful on 10-12-2019 by Eric Shyu on Windows 10.
 
