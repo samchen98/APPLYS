@@ -159,9 +159,14 @@ router.route('/updateScore').post((req, res) => {
   //   score
   // } = body;
   console.log(req.body.email)
-  User.updateOne({email: req.body.email}, 
-    {$set: { incorrectAns : req.body.incorrect, "surveyScore" : req.body.score}});
-});
+  User.findOneAndUpdate({email: req.body.email}, 
+    { incorrectAns : req.body.incorrect, "surveyScore" : req.body.score}, {new: true}, (err, doc) => {
+      if (err) {
+          console.log("Something wrong when updating data!");
+      }
+      console.log(doc);
+    });
+})
 
 
 module.exports = router;

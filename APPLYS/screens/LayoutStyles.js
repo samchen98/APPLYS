@@ -9,6 +9,7 @@ export default StyleSheet.create({
   container: { //ENTIRE SCREEN
     flex: 1,
     backgroundColor: '#FFF',
+    alignItems: 'center'
   },
   contentContainer: { //MAIN CONTAINER OF ALL CONTENT WITHIN SCREEN
       paddingTop: 30,

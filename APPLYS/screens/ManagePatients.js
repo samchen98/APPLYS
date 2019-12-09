@@ -53,7 +53,10 @@ export default class ManagePatients extends React.Component{
                             {this.state.parr.map(bundle =>
                                 <Panel title= {bundle.fname.concat(" " , bundle.lname)}>
                                     <Text>{bundle.email}</Text>
-                                    
+                                    <Text>{bundle.surveyScore}</Text>
+                                    {bundle.incorrectAns.map(q =>
+                                    <Text>{q}</Text>
+                                ) }
                                 </Panel>) }
                         </ScrollView>
                     </View>

@@ -63,7 +63,7 @@ export default class MainHome extends React.Component{
                     <View style={styles.buttondiv}>
                     <TouchableOpacity
                         style = {styles.roleBtn}
-                    onPress = {() => this.props.navigation.navigate("Survey", {email: this.state.info.email})}>
+                    onPress = {() => this.props.navigation.navigate("Survey", {email: this.state.email})}>
                     <Text style = {styles.roletxt}> Survey </Text>
                 </TouchableOpacity>
                 
