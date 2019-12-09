@@ -7,6 +7,7 @@ import {
 import axios from 'axios';
 import styles from '../styles/SignupStyles'
 import layout from './LayoutStyles'
+import Logo from '../assets/images/Logo.js';
 import { Container, Header, Left, Body, Right, Button, Icon, Title, Text } from 'native-base';
 export default class SignupRole extends Component {
     handlePress(type) {
@@ -20,7 +21,7 @@ export default class SignupRole extends Component {
     }
   render() {
     return (
-      <Container style = {{backgroundColor: "#92e66c"}}>
+      <Container style = {{backgroundColor: "white"}}>
         <Header transparent>
             <Left>
             </Left>
@@ -34,14 +35,11 @@ export default class SignupRole extends Component {
           </Right>
         </Header>
         <View style={layout.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
+
+        <View style={styles.logo1}>
+            <Logo/>
+          </View>
+            
         </View>
         <View style = {{justifyContent: 'center', alignItems: 'center'}}> 
             <Text style = {styles.iamtext}>I am a...</Text>
