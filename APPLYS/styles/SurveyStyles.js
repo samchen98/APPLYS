@@ -41,7 +41,7 @@ submitbtn:{
   borderWidth:2,
 },
 submittext:{
-  color:'black',
+  color:'white',
 },
 anstext:{
 color:'black',
