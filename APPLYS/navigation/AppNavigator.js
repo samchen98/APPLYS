@@ -11,15 +11,18 @@ import Infographics from '../screens/Infographics'
 import Signup from '../screens/Signup'
 import SignupRole from '../screens/SignupRole'
 import SurveyDone from '../screens/SurveyDone'
-
+import PhysHome from '../screens/PhysHome'
+import ManagePatients from '../screens/ManagePatients'
+import ManageSurvey from '../screens/ManageSurvey'
+import PhysSignUp from '../screens/PhysSignUp'
 
 //add screens here
 const AppStack = createStackNavigator({
+  Signup: {screen: Signup},
   Home: {screen: MainHome},
   Survey: {screen: Survey},
   Passport: {screen: Passport},
   Infographics: {screen: Infographics},
-  Signup: {screen: Signup},
   Role: {screen: SignupRole},
   SurveyDone: {screen: SurveyDone}
 })
@@ -27,20 +30,29 @@ const AuthStack = createStackNavigator({
   Login: {screen: LoginScreen}, 
  
 })
-// const Signup = createStackNavigator({
-//   Sign: {screen: SignupScreen}, 
- 
-// })
+const PhysStack = createStackNavigator({
+  PhysHome : {screen: PhysHome},
+  Patients: {screen: ManagePatients},
+  ManageSurv: {screen: ManageSurvey}
+})
 
 export default createAppContainer(
   createSwitchNavigator({
     AuthLoading: AuthLoadingScreen,
-    App: AppStack,
-    Auth: AuthStack,
-    Sign: Signup,
+    //Auth: AuthStack,
+    Login: LoginScreen,
+    // App: AppStack,
+    // Phys: PhysStack,
     Role: SignupRole,
+    Sign: Signup,
+    PhysSignUp: PhysSignUp,
+    PhysHome : PhysHome,
+    Patients: ManagePatients,
+    ManageSurv: ManageSurvey,
+    Home: MainHome,
+    Survey: Survey,
     SurveyDone: SurveyDone,
-    Home: MainHome
+    
   },
   {
     initialRouteName: 'AuthLoading',
