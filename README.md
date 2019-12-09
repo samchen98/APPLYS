@@ -1,14 +1,7 @@
 # APPLYS
 
-
-routes we need:
-- create user // 
-- checking correctness of answer
-- posting survey score
-- getting/posting user info for medical passport
-- posting new survey question/deleting question (physician side)
-- posting/deleting infographic (physician side)
 About:
+
 Most AYA (Adolescents and Young Adults) with chronic health conditions are not prepared to self-manage their
 own health-focused services as they transition from pediatric to adult-focused health services. On the other
 hand, most parents of these AYA do not know when to let go of managing their children’s health.
