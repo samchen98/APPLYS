@@ -44,44 +44,44 @@ export default class QuestionGenerator extends React.Component{
                 <View style={styles.qmaindiv}>
         
                   <View style={styles.qdiv}>
-                    <Text >Question {this.props.questiongroup.id}:</Text>
+                    <Text style={{margin:5, fontSize:16}} >Question {this.props.questiongroup.id}:</Text>
                   
-                    <Text style={{height: '75%'}}> {this.props.questiongroup.question}</Text>
+                    <Text style={{height: '75%',margin:5, fontSize:14}}> {this.props.questiongroup.question}</Text>
                   </View>
                   
                   <View style={styles.btndiv}>
                       <Button
                           onPress = {() => this.handleClick(0)}
-                          style = {{borderColor:'#7303fc',
+                          style = {{borderColor:'purple',
                           borderWidth:2, margin: 5, backgroundColor:
                             this.state.selectedans === 0
-                                ? "#7303fc"
+                                ? "purple"
                                 : "white" }}>
                           <Text style = {styles.anstext}> {this.props.answerarr[0]} </Text>
                       </Button>
                       <Button
-                           style = {{borderColor:'#7303fc',
+                           style = {{borderColor:'purple',
                            borderWidth:2, margin: 5, backgroundColor:
                             this.state.selectedans === 1
-                                ? "#7303fc"
+                                ? "purple"
                                 : "white"}}
                           onPress = {() => this.handleClick(1)}>
                           <Text style = {styles.anstext}> {this.props.answerarr[1]}  </Text>
                       </Button>
                       <Button
-                           style = {{borderColor:'#7303fc',
+                           style = {{borderColor:'purple',
                            borderWidth:2, margin: 5, backgroundColor:
                             this.state.selectedans === 2
-                                ? "#7303fc"
+                                ? "purple"
                                 : "white"}}
                           onPress = {() => this.handleClick(2)}>
                           <Text style = {styles.anstext}> {this.props.answerarr[2]}  </Text>
                       </Button>
                       <Button
-                           style = {{borderColor:'#7303fc',
+                           style = {{borderColor:'purple',
                            borderWidth:2, margin: 5, backgroundColor:
                             this.state.selectedans === 3
-                                ? "#7303fc"
+                                ? "purple"
                                 : "white"}}
                           onPress = {() => this.handleClick(3)}>
                           <Text style = {styles.anstext}> {this.props.answerarr[3]}  </Text>
