@@ -55,6 +55,11 @@ export default class SignUpScreen extends Component {
       userType: this.state.userType,
       physemail: physemail
     };
+
+  // authenticate =(email) =>{
+  //   axios.post(config.serversite + '/users/add', newUser)
+  //   }
+    ////
     const temp = config.serversite;
 
     console.log(pass.length)
@@ -139,10 +144,10 @@ export default class SignUpScreen extends Component {
                     autoCapitalize = "none"
                     onChangeText={physemail => this.setState({ physemail })}
                     value= {this.state.physemail} />
-
               <Button
                 style = {styles.submitButton}
-                onPress = {() => this.signup(this.state.fname, this.state.lname, this.state.email, this.state.password, this.state.physemail)}>
+               // onPressIn={() => {this.authenticate(this.state.email)}}
+                onPress = {() =>  this.signup(this.state.fname, this.state.lname, this.state.email, this.state.password, this.state.physemail)}>
                   <Text style = {styles.submitButtonText}> Create Account </Text>
               </Button>
 
@@ -156,5 +161,6 @@ export default class SignUpScreen extends Component {
   //   await AsyncStorage.setItem('userToken', 'abc');
   //   this.props.navigation.navigate('App');
   // };
+  function
   
 }

@@ -166,3 +166,4 @@ export default class MainHome extends React.Component{
         
     }
 }
+//, {email: this.state.info.email}

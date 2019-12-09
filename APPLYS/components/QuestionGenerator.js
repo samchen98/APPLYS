@@ -9,7 +9,7 @@ import {
     View,
     TextInput
   } from 'react-native';
-import styles from "../screens/Styles"
+  import styles from '../styles/SurveyStyles'
 import {Button} from 'native-base'
 
 export default class QuestionGenerator extends React.Component{
@@ -41,60 +41,69 @@ export default class QuestionGenerator extends React.Component{
     }
     render(){
             return(
-                <View style={{height: '100%'}}>
+                <View style={styles.qmaindiv}>
         
-                  <View style={{height: '30%', backgroundColor: '#43D51E'}}>
+                  <View style={styles.qdiv}>
                     <Text >Question {this.props.questiongroup.id}:</Text>
                   
                     <Text style={{height: '75%'}}> {this.props.questiongroup.question}</Text>
                   </View>
                   
-                  <View>
+                  <View style={styles.btndiv}>
                       <Button
                           onPress = {() => this.handleClick(0)}
-                          style = {{backgroundColor:
+                          style = {{borderColor:'purple',
+                          borderWidth:2, margin: 5, backgroundColor:
                             this.state.selectedans === 0
-                                ? "red"
-                                : "grey"}}>
-                          <Text style = {styles.submitButtonText}> {this.props.answerarr[0]} </Text>
+                                ? "purple"
+                                : "white" }}>
+                          <Text style = {styles.anstext}> {this.props.answerarr[0]} </Text>
                       </Button>
                       <Button
-                           style = {{backgroundColor:
+                           style = {{borderColor:'purple',
+                           borderWidth:2, margin: 5, backgroundColor:
                             this.state.selectedans === 1
-                                ? "red"
-                                : "grey"}}
+                                ? "purple"
+                                : "white"}}
                           onPress = {() => this.handleClick(1)}>
-                          <Text style = {styles.submitButtonText}> {this.props.answerarr[1]}  </Text>
+                          <Text style = {styles.anstext}> {this.props.answerarr[1]}  </Text>
                       </Button>
                       <Button
-                           style = {{backgroundColor:
+                           style = {{borderColor:'purple',
+                           borderWidth:2, margin: 5, backgroundColor:
                             this.state.selectedans === 2
-                                ? "red"
-                                : "grey"}}
+                                ? "purple"
+                                : "white"}}
                           onPress = {() => this.handleClick(2)}>
-                          <Text style = {styles.submitButtonText}> {this.props.answerarr[2]}  </Text>
+                          <Text style = {styles.anstext}> {this.props.answerarr[2]}  </Text>
                       </Button>
                       <Button
-                           style = {{backgroundColor:
+                           style = {{borderColor:'purple',
+                           borderWidth:2, margin: 5, backgroundColor:
                             this.state.selectedans === 3
-                                ? "red"
-                                : "grey"}}
+                                ? "purple"
+                                : "white"}}
                           onPress = {() => this.handleClick(3)}>
-                          <Text style = {styles.submitButtonText}> {this.props.answerarr[3]}  </Text>
+                          <Text style = {styles.anstext}> {this.props.answerarr[3]}  </Text>
                       </Button>
+
+                      
+                      
+
                   </View>
-                  <View>
+                  <View style={styles.subbtndiv}>
                       <Button
-                          style = {styles.questionSubmitButton}
+                          style = {styles.submitbtn}
                           onPress = {() => this.handleSubmit(true)}>
-                          <Text style = {styles.submitButtonText}> Submit </Text>
+                          <Text style = {styles.submittext}> Submit </Text>
                       </Button>
                       <Button
-                          style = {styles.questionSubmitButton}
+                          style = {styles.submitbtn}
                           onPress = {() => this.handleSubmit(false)}>
-                          <Text style = {styles.submitButtonText}> Don't Know </Text>
+                          <Text style = {styles.submittext}> Don't Know </Text>
                       </Button>
-                  </View> 
+                      </View>
+                  
               </View>
                   
             )
