@@ -21,14 +21,14 @@ class SurveyDone extends React.Component{
         const obj = {
             email: this.props.email,
             incorrect: this.props.incorrect,
-            score: this.props.cor.toString() + "/" + this.props.tot.toString()
+            surveyScore: this.props.cor.toString() + "/" + this.props.tot.toString()
         }
         axios.post(config.serversite + '/users/updateScore',obj)
         .then(res => {
             console.log(res.data)
         });
-        console.log(obj.score)
-        await AsyncStorage.setItem('score', obj.score);
+        console.log(obj.surveyScore)
+        await AsyncStorage.setItem('score', obj.surveyScore);
         await AsyncStorage.setItem('incorrect', JSON.stringify(this.props.incorrectFeed));
     }
     render(){

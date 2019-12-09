@@ -43,22 +43,26 @@ export default class LoginScreen extends Component {
   };
 
   async storePatient(data) {
-    console.log(data.fname)
-    await AsyncStorage.setItem('userToken', "1");
+    await AsyncStorage.setItem('userToken', "patient");
     await AsyncStorage.setItem('userinfo', JSON.stringify(data));
+    if(data.surveyScore != null){
+      await AsyncStorage.setItem('score', data.surveyScore);
+    }
+   
+    await this.props.navigation.navigate('App');
     // await AsyncStorage.setItem('fname', data.fname);
     // await AsyncStorage.setItem('lname', data.lname);
     // await AsyncStorage.setItem('email', data.email);
-    // await AsyncStorage.setItem('score', data.surveyScore);
+    
     // await AsyncStorage.setItem('physemail', data.physemail);
   }
 
   async storePhysician(data) {
-    await AsyncStorage.setItem('userToken', "1");
-    await AsyncStorage.setItem('fname', data.fname);
-    await AsyncStorage.setItem('lname', data.lname);
-    await AsyncStorage.setItem('email', data.email);
-    return
+    console.log(data)
+    await AsyncStorage.setItem('userToken', "physician");
+    await AsyncStorage.setItem('physinfo', JSON.stringify(data));
+    await this.props.navigation.navigate('Phys');
+    
   }
 
   login = async(email, pass) => {
@@ -71,11 +75,12 @@ export default class LoginScreen extends Component {
     .then(res=> {if(res.data.success = true){
       if(res.data.message.userType == "patient"){
         this.storePatient(res.data.message)
-        this.props.navigation.navigate('App');
+        
       }
       else if(res.data.message.userType == "physician"){
+        console.log(res)
         this.storePhysician(res.data.message)
-        this.props.navigation.navigate('Phys');
+     
       }
     }
     else{

@@ -8,9 +8,12 @@ import {
     View,
     TextInput
 } from 'react-native';
-import styles from './Styles.js'
 import { Button, Icon, Title, Text } from 'native-base';
-
+import styles from '../styles/MainHomeStyles'
+import LogoHeader from '../assets/images/LogoHeader';
+import axios from 'axios';
+const config = require("../config")
+import Carousel from 'react-native-snap-carousel';
 
 export default class PhysHome extends React.Component{
     constructor(props) {
@@ -25,15 +28,16 @@ export default class PhysHome extends React.Component{
         title: 'Home',
     };
 
-    async componentDidMount() {
+    async getIt() {
+        if(this.state.fname == ''){
         try {
-            const fname = await AsyncStorage.getItem('fname');
-            const lname = await AsyncStorage.getItem('lname');
-            const email = await AsyncStorage.getItem('email');
-            this.setState({fname: fname, lname: lname, email: email})
+            const physinfo = await AsyncStorage.getItem('physinfo');
+            const pi = JSON.parse(physinfo)
+            this.setState({fname: pi.fname, lname: pi.lname, email: pi.email})
           } catch (error) {
               console.log(error.message);
           }
+        }
     }
     
     _signOutAsync = async () => {
@@ -42,24 +46,20 @@ export default class PhysHome extends React.Component{
     };
 
     render(){
-        console.log(this.state.info)
+        this.getIt()
         return(
-            <View style = {styles.container}>
-                <ScrollView
-                style={styles.container}
-                contentContainerStyle={styles.contentContainer}>
-                    <View style = {styles.container}>
-                        <Text>PHYSICIAN SCREEN</Text>
-                        <Text>Welcome, {this.state.fname} {this.state.lname}</Text>
-                        <Button onPress = {() => this.props.navigation.navigate('ManageSurv')}><Text>Manage Survey Questions</Text></Button>
-                        <Button onPress = {() => this.props.navigation.navigate('Patients', {email: this.state.email})}><Text>Manage Patients</Text></Button>
-                        <Button
-                            onPress = {this._signOutAsync}>
-                            <Text style = {styles.roletxt}> Sign Out </Text>
-                        </Button>
-                    </View>
+            <View style = {styles.maindiv}>
+                <View style ={styles.infodiv} >
+                    <Text style={ styles.maintextPhys}>Welcome, </Text>
+                    <Text style={ styles.maintext}>{this.state.fname} {this.state.lname}</Text> 
+                    <Button style = {styles.signout} onPress={() => this._signOutAsync()} title= "Sign Out"><Text style = {styles.signouttxt}>Sign Out</Text></Button>
+                </View>
+                <View style={styles.buttondivphys}>
+                    <Button style = {styles.physBtn} onPress = {() => this.props.navigation.navigate('ManageSurv')}><Text style = {styles.physBtnText}>Manage Survey Questions</Text></Button>
+                    <Button style = {styles.physBtn} onPress = {() => this.props.navigation.navigate('Patients', {email: this.state.email})}><Text style = {styles.physBtnText}>Manage Patients</Text></Button>
+    
+                </View>
                     
-                </ScrollView>
             </View>
             
         )

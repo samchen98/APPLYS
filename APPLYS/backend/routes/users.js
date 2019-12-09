@@ -174,7 +174,7 @@ router.route('/updateScore').post((req, res) => {
   // } = body;
   console.log(req.body.email)
   User.findOneAndUpdate({email: req.body.email}, 
-    { incorrectAns : req.body.incorrect, "surveyScore" : req.body.score}, {new: true}, (err, doc) => {
+    { incorrectAns : req.body.incorrect, surveyScore : req.body.score}, {new: true}, (err, doc) => {
       if (err) {
           console.log("Something wrong when updating data!");
       }

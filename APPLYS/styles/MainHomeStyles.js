@@ -60,9 +60,35 @@ export default StyleSheet.create({
     color: "white",
     fontFamily: 'nunito'
   },
+  physBtn: {
+    backgroundColor: "white",
+    margin: 20,
+    width: 350,
+    height: 80,
+    textAlign: 'center',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  physBtnText: {
+    color: "black",
+    fontFamily: 'nunito',
+    fontSize:28,
+  },
+  buttondivphys:{
+    flex: 1, 
+    alignItems: "center",
+    flexDirection:"column",
+  },
+  maintextPhys: {
+    paddingLeft: 15,
+    paddingTop: 5,
+    fontSize:35,
+    color: 'black',
+    fontFamily:'nunito'
+  },
   signout: {
     backgroundColor: 'purple',
-    width: 80,
+    width: 95,
     margin: 15,
     position: 'absolute',
     right: 0,
@@ -71,26 +97,27 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   signouttxt: {
-    color: 'white'
+    color: 'white',
+    fontSize: 14,
   },
      
-      maindiv:{
-        backgroundColor: "purple",
-        flex: 1, 
-        justifyContent: "center",
-        alignItems: "center",
-        //flexDirection:"row",
-        display:'flex',
-      }, 
-      maintext:{
-        paddingLeft: 15,
-        paddingTop: 5,
-        paddingBottom: 10,
-        fontSize:55,
-        color: 'black',
-        fontFamily:'nunito'
+    maindiv:{
+      backgroundColor: "purple",
+      flex: 1, 
+      justifyContent: "center",
+      alignItems: "center",
+      //flexDirection:"row",
+      display:'flex',
+    }, 
+    maintext:{
+      paddingLeft: 15,
+      paddingTop: 5,
+      paddingBottom: 10,
+      fontSize:55,
+      color: 'black',
+      fontFamily:'nunito'
 
-      },
+    },
       infodiv:{
         backgroundColor:'white', 
         height: 140,
