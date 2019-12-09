@@ -44,9 +44,9 @@ export default class QuestionGenerator extends React.Component{
                 <View style={styles.qmaindiv}>
         
                   <View style={styles.qdiv}>
-                    <Text >Question {this.props.questiongroup.id}:</Text>
+                    <Text style={{margin:5, fontSize:16}} >Question {this.props.questiongroup.id}:</Text>
                   
-                    <Text style={{height: '75%'}}> {this.props.questiongroup.question}</Text>
+                    <Text style={{height: '75%',margin:5, fontSize:14}}> {this.props.questiongroup.question}</Text>
                   </View>
                   
                   <View style={styles.btndiv}>
